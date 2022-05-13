@@ -5,6 +5,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import Dropdown from './Dropdown';
+import Cart from './Cart';
 import logo from 'assets/coderpizza2.png';
 
 const index = () => {
@@ -22,20 +23,25 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
                 alt="logo"
               />
           </div>
-          <nav className="hidden md:col-span-6 md:grid">
-            <ul className="flex justify-center gap-10 list-none">
-                {/* {categoriesList} */}
+          <nav className="hidden md:col-span-6 md:flex">
+            <ul className="flex justify-center gap-10 mx-auto list-none">
                 <li>
                     <Dropdown categories={categories}/>
                 </li>
                 <li><a href="#">Contacto</a></li>
+                
             </ul>
+            <div className="my-auto ml-auto">
+              <Cart items={4}/>
+            </div>
           </nav>
           <div className="block col-span-4 -my-2 -mr-2 text-right md:hidden">
             <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100">
               <MenuIcon className="w-6 h-6" aria-hidden="true" />
             </Popover.Button>
           </div>
+
+          {/* Mobile */}
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
