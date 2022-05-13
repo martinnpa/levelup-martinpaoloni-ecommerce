@@ -2,20 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-.theme-dark {
-  
+:root {
+  --color-primary: #121212;
+  --color-primary-light: #202020;
+  --color-primary-on: #fff;
+  --color-secundary: #e0ff00;
+  --color-secundary-alt: #ffff00;
+  --color-secundary-lilac: #ea90ff;
+  /* --color-primary-green: #e0ff00;
+  --color-primary-yellow: #ffff00; */
+  --color-grey: #666;
+  @apply bg-primary;
 }
 
-/* body {
+.theme-dashboard {
+  --color-primary: #1f2023;
+  --color-primary-dark: #121212;
+  --color-primary-light: #27282d;
+  --color-primary-lighter: #393b43;
+  
+  --color-primary-on: #fff;
+  --color-secundary: #e5f876;
+  --color-secundary-alt: #ffff00;
+  --color-secundary-lilac: #ea90ff;
+
+  --color-grey: #bebebe;
+  @apply bg-primary;
+}
+
+body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} */
+}
+
+a:hover {
+  @apply text-secundary;
+}
