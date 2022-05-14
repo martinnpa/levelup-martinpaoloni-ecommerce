@@ -31,7 +31,7 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
                 <li><a href="#">Contacto</a></li>
                 
             </ul>
-            <div className="my-auto ml-auto">
+            <div className="text-center w-52">
               <Cart items={4}/>
             </div>
           </nav>

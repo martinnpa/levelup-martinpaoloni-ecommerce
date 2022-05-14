@@ -18,7 +18,7 @@ module.exports = {
           alt: 'var(--color-secundary-alt)',
           lilac: 'var(--color-secundary-lilac)'
         },
-        greys: {
+        grey: {
           DEFAULT: 'var(--color-grey)',
           1: '#444',
           2: '#8d8d8d',
@@ -31,6 +31,12 @@ module.exports = {
     container: {
       center: true,
     },
+  },
+  variants: {
+    extend: {
+      backgroundOpacity: ['disabled'],
+      backgroundColor: ['disabled']
+    }
   },
   plugins: [],
 }
