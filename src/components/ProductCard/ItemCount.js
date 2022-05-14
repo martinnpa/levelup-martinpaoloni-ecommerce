@@ -3,8 +3,8 @@ import styles from "./Button.module.css";
 import { ShoppingCartIcon } from '@heroicons/react/outline';
 import Button from 'components/Common/Button';
 
-const ItemCount = ({stock}) => {
-  const [counter, setCounter] = useState(0);
+const ItemCount = ({stock, initial}) => {
+  const [counter, setCounter] = useState(initial);
 
   const handleOperationSum = () => {
     if (counter !== stock) {
@@ -17,6 +17,9 @@ const ItemCount = ({stock}) => {
       setCounter(counter - 1);
     }
   };
+
+  const onAdd = () => alert('Aca va la función agregar');
+
   return (
     <>
       <p className="pt-2 mt-2 mb-3 text-center border-t border-secundary">Stock: {stock - counter}</p>
@@ -40,7 +43,7 @@ const ItemCount = ({stock}) => {
         </button>
       </div>
       <div className="mt-3 text-center">
-        <Button disabled={counter===0} onClick={()=> alert('Aca va la función agregar')}>
+        <Button disabled={counter===0} onClick={()=> onAdd()}>
           <ShoppingCartIcon className="relative w-5 mr-1" style={{top: "2px"}}/> <span>Agregar</span>
         </Button>
       </div>

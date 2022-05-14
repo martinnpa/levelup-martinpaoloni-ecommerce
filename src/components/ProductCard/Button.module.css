@@ -1,5 +1,5 @@
 .operation {
-  @apply inline-block text-white bg-grey-1 disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply inline-block text-white border bg-grey-1 disabled:opacity-50 disabled:cursor-not-allowed border-grey-1 hover:border-secundary;
   padding: 12px 10px;
   line-height: 0;
 }
