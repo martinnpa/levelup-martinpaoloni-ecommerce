@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-// import CardLayout from 'components/Common/CardLayout';
-import ButtonPlus from 'components/Common/ButtonPlus';
-import ButtonMinus from 'components/Common/ButtonMinus';
 import Button from 'components/Common/Button';
+import ItemCount from 'components/ProductCard/ItemCount';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 
 
@@ -16,9 +14,7 @@ const ProductCard = ({pizza}) => {
         <p className="overflow-hidden text-sm text-ellipsis h-11">{pizza.description}</p>
         <p className="pt-2 mt-2 mb-3 text-center border-t border-secundary">Stock: {pizza.stock - counter}</p>
         <div className="flex content-center justify-between w-1/2 mx-auto">
-          <ButtonMinus counter={counter} setCounter={setCounter} stock={pizza.stock}/>
-          {counter}
-          <ButtonPlus counter={counter} setCounter={setCounter} stock={pizza.stock}/>
+          <ItemCount stock={pizza.stock}/>
         </div>
         <div className="mt-3 text-center">
           <Button disabled={counter===0} onClick={()=> alert('Aca va la función agregar')}>
