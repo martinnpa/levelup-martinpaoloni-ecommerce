@@ -1,11 +1,11 @@
-import ItemListContainer from "components/ItemListContainer/ItemListContainer";
+import ItemListContainer from "components/Items/ItemListContainer";
 import NavBar from "components/NavBar";
 
 function App() {
 
   return (
     <>
-    <div className="min-h-scresd">
+    <div className="min-h-screen theme-dashboard">
       <header>
         <NavBar/>
       </header>
