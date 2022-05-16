@@ -4,7 +4,7 @@ import {
   MenuIcon,
   XIcon,
 } from '@heroicons/react/outline';
-import Dropdown from './Dropdown';
+import PizzasMenu from './PizzasMenu';
 import Cart from './Cart';
 import logo from 'assets/coderpizza2.png';
 
@@ -26,7 +26,7 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
           <nav className="hidden md:col-span-6 md:flex">
             <ul className="flex justify-center gap-10 mx-auto list-none">
                 <li>
-                    <Dropdown categories={categories}/>
+                    <PizzasMenu categories={categories}/>
                 </li>
                 <li><a href="#">Contacto</a></li>
                 
@@ -55,7 +55,7 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
             <div className="px-5 pt-5 pb-6 rounded-lg shadow-lg bg-primary-light ring-1 ring-black ring-opacity-5 ">
                 <div className="flex justify-between">
                     <ul>
-                        <li><Dropdown categories={categories}/></li>
+                        <li><PizzasMenu categories={categories}/></li>
                     </ul>
                     <div className="-mr-2">
                         <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100">

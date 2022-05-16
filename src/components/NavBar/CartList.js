@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import { Popover, Transition, Menu } from '@headlessui/react';
 
-const ItemListContainer = () => {
+const CartList = () => {
   return (
     <Transition
     as={Fragment}
@@ -21,4 +21,4 @@ const ItemListContainer = () => {
   )
 }
 
-export default ItemListContainer
+export default CartList

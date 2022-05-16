@@ -3,7 +3,7 @@ import {
     ShoppingCartIcon
   } from '@heroicons/react/outline';
 import { Popover } from '@headlessui/react';
-import ItemListContainer from './ItemListContainer';
+import CartList from './CartList';
 
 const Cart = ({items}) => {
   return (
@@ -14,7 +14,7 @@ const Cart = ({items}) => {
                 {items}
             </span>
         </Popover.Button>
-        <ItemListContainer />
+        <CartList />
     </Popover>
   )
 }

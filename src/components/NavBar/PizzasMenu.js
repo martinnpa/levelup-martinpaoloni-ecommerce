@@ -1,7 +1,7 @@
 import React from 'react';
 import { Transition, Menu } from '@headlessui/react';
 import {ChevronDownIcon} from '@heroicons/react/outline';
-const Dropdown = ({categories}) => {
+const PizzasMenu = ({categories}) => {
 
     const categoriesList = categories.map((category, index)=> {
         return <Menu.Item key={index} ><a href="/">{category}</a></Menu.Item>;
@@ -27,4 +27,4 @@ const Dropdown = ({categories}) => {
   )
 }
 
-export default Dropdown
+export default PizzasMenu
