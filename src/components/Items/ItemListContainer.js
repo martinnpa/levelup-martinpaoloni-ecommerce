@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Loader from 'components/Common/Loader';
 import ItemList from './ItemList';
+import Pizzas from 'assets/products.json';
+import { Buffer } from 'buffer';
+
 
 const ItemListContainer = () => {
   const [productsList, setProductsList] = useState([]);
@@ -12,44 +15,23 @@ const ItemListContainer = () => {
 
     const fetchProducts = new Promise ((res, rej) => {
       setTimeout(()=>{
-        res([
-          {
-            id: 1,
-            name: "Muzarella",
-            photo: 'https://img.pizza/500/300',
-            stock: 20,
-            description: 'Salsa, Muzarella, Olivas verdes.',
-            price: 700
-          },
-          {
-            id: 2,
-            name: "Napolitana",
-            photo: 'https://img.pizza/500/301',
-            stock: 5,
-            description: 'Salsa, Muzarella, Tomate, Olivas verdes.',
-            price: 850
-          },
-          {
-            id: 3,
-            name: "Fugazzetta",
-            photo: 'https://img.pizza/499/301',
-            stock: 55,
-            description: 'Salsa, Muzarella, Cebolla, Mucha cebolla.',
-            price: 850
-          },
-          {
-            id: 4,
-            name: "4 Formaggis",
-            photo: 'https://img.pizza/499/304',
-            stock: 27,
-            description: 'Salsa, Muzarella, Gorgonzola, Parmesano, Fontina, Olivas verdes.',
-            price: 1050
-          },
-        ])
+        res(Pizzas)
       },3000)
     });
 
-    fetchProducts.then(
+    // const auth = { "Authorization" : 'Basic'+btoa("paolonimartin+sheetlabs@gmail.com:t_435076c6af12c788c973adc3ff5a850d") };
+    // const auth2 = { "Authorization" : 'Basic'+Buffer.from('paolonimartin+sheetlabs@gmail.com:t_435076c6af12c788c973adc3ff5a850d').toString('base64')};
+    fetch('https://sheetlabs.com/MEP/pizzas').then((res) => res.json())
+    .then((result) => {
+      console.log(result);
+      setProductsList(result);
+    }).catch((error) => {
+      setError(''+error);
+    }).finally(()=>{
+      setLoading(false);
+    })
+
+    /* fetchProducts.then(
       (result) => {
         setProductsList(result);
       }
@@ -58,7 +40,7 @@ const ItemListContainer = () => {
         setError(''+error);
       }
     )
-    .finally(() => setLoading(false));
+    .finally(() => setLoading(false)); */
 
   }
 
