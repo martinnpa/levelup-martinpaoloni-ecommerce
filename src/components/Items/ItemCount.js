@@ -22,7 +22,7 @@ const ItemCount = ({stock, initial}) => {
 
   return (
     <>
-      <p className="pt-2 mt-2 mb-3 text-center border-t border-secundary">Stock: {stock - counter}</p>
+      <p className="mb-3 text-center">Stock: {stock - counter}</p>
       <div className="flex content-center justify-between w-1/2 mx-auto">
         <button
           className={styles.operation}
