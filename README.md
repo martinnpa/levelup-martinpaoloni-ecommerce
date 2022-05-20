@@ -6,9 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ---
 ## Libraries
-- Tailwind CSS [Link](https://tailwindcss.com/)
+- Tailwind CSS [Link](https://tailwindcss.com/) 
+  - Tailwind plugin line clamp [Link](https://github.com/tailwindlabs/tailwindcss-line-clamp)
 - Headless UI [Link](https://headlessui.dev/react/)
 - Heroicons [Link](https://heroicons.com/)
+- React router dom
 
 ---
 ## Available Scripts

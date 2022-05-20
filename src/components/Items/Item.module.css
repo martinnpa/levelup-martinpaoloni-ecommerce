@@ -1,0 +1,15 @@
+.ribbon {
+  @apply absolute flex items-center justify-center px-2 text-xs h-7 -left-2 backdrop-blur-sm;
+  background-color: rgba(var(--color-secundary-lilac-n), 0.7);
+  @apply text-primary-dark;
+  font-weight: bold;
+}
+.ribbon > span {
+  @apply absolute left-0 w-2 h-2 bg-secundary-lilac top-7;
+  clip-path:polygon(100% 0,100% 100%,0 0);
+  filter: brightness(50%);
+}
+
+.ribbon img {
+  image-rendering: -webkit-optimize-contrast;
+}

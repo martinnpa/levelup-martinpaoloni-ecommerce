@@ -5,62 +5,160 @@
     "photo": "https://img.pizza/500/300",
     "stock": 120,
     "description": "Salsa, Muzarella, Olivas verdes.",
-    "price": 700
+    "price": 700,
+    "category": "Pizzas"
   },
   {
-    "id": 8,
+    "id": 2,
     "name": "Especial",
     "photo": "https://img.pizza/508/308",
     "stock": 68,
     "description": "Salsa, Muzarella, Jamón cocido, Pimientos, Olivas verdes.",
-    "price": 1050
+    "price": 1050,
+    "category": "Pizzas"
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Napolitana",
     "photo": "https://img.pizza/500/301",
     "stock": 75,
     "description": "Salsa, Muzarella, Tomate, Olivas verdes.",
-    "price": 850
-  },
-  {
-    "id": 3,
-    "name": "Fugazzetta",
-    "photo": "https://img.pizza/499/301",
-    "stock": 55,
-    "description": "Salsa, Muzarella, Cebolla, Mucha cebolla.",
-    "price": 850
+    "price": 850,
+    "category": "Pizzas"
   },
   {
     "id": 4,
+    "name": "Fugazzetta",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16795.jpg",
+    "stock": 55,
+    "description": "Salsa, Muzarella, Cebolla, Mucha cebolla.",
+    "price": 850,
+    "category": "Pizzas"
+  },
+  {
+    "id": 5,
     "name": "4 Formaggis",
     "photo": "https://img.pizza/499/304",
     "stock": 27,
     "description": "Salsa, Muzarella, Gorgonzola, Parmesano, Fontina, Olivas verdes.",
-    "price": 1050
+    "price": 1050,
+    "category": "Pizzas"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "Pera a la Gorgonzola",
     "photo": "https://img.pizza/510/300",
     "stock": 10,
     "description": "Salsa, Muzarella, Gorgonzola, Pera caramelizada.",
-    "price": 1050
+    "price": 1050,
+    "category": "Pizzas"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Rucula",
     "photo": "https://img.pizza/503/303",
     "stock": 21,
     "description": "Salsa, Muzarella, Rucula, Tomate disecado, Jamon crudo, Olivas negras.",
-    "price": 1050
+    "price": 1050,
+    "category": "Pizzas"
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "Argenta",
-    "photo": "https://img.pizza/510/300",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16528.jpeg",
     "stock": 7,
     "description": "Salsa, Muzarella, Chorizo picado, Pimientos asados, Olivas verdes.",
-    "price": 1050
+    "price": 1050,
+    "category": "Pizzas"
+  },
+  {
+    "id": 9,
+    "name": "Argenta pizzeta",
+    "photo": "https://img.pizza/510/300",
+    "stock": 30,
+    "description": "Salsa, Muzarella, Chorizo picado, Pimientos asados, Olivas verdes.",
+    "price": 600,
+    "category": "Pizzetas"
+  },
+  {
+    "id": 10,
+    "name": "Muzarella pizzeta",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16357.jpeg",
+    "stock": 120,
+    "description": "Salsa, Muzarella, Olivas verdes.",
+    "price": 375,
+    "category": "Pizzetas"
+  },
+  {
+    "id": 11,
+    "name": "Napolitana pizzeta",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.15742.jpeg",
+    "stock": 75,
+    "description": "Salsa, Muzarella, Tomate, Olivas verdes.",
+    "price": 450,
+    "category": "Pizzetas"
+  },
+  {
+    "id": 12,
+    "name": "Criolla",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16929.jpg",
+    "stock": 200,
+    "description": "Carne molida, cebolla, aceituna, huevo.",
+    "price": 120,
+    "category": "Empanadas"
+  },
+  {
+    "id": 13,
+    "name": "Salteña",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16360.jpeg",
+    "stock": 94,
+    "description": "Carne cortada a cuchillo, papa, cebolla, aceituna, huevo.",
+    "price": 120,
+    "category": "Empanadas"
+  },
+  {
+    "id": 14,
+    "name": "Mendocina",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.14876.jpeg",
+    "stock": 30,
+    "description": "Carne picada, cebolla, ají, pimentón, huevo, orégano, aceituna.",
+    "price": 120,
+    "category": "Empanadas"
+  },
+  {
+    "id": 15,
+    "name": "De carne frita",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.12223.jpeg",
+    "stock": 50,
+    "description": "Carne picada, cebolla, morrón, ajo, laurel, cebolla de verdeo, aceituna.",
+    "price": 120,
+    "category": "Empanadas"
+  },
+  {
+    "id": 16,
+    "name": "Flan",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16682.jpeg",
+    "stock": 50,
+    "description": "Se puede acompañar con crema y/o dulce de leche.",
+    "price": 200,
+    "category": "Postres"
+  },
+  {
+    "id": 17,
+    "name": "Lingote de dulce de leche",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16962.jpg",
+    "stock": 20,
+    "description": "Dulce de leche, avellanas, chocolate. Exquisito.",
+    "price": 200,
+    "category": "Postres"
+  },
+  {
+    "id": 18,
+    "name": "Bombones helados",
+    "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16956.jpg",
+    "stock": 20,
+    "description": "Especialidad de nuestro chef, recomendadisimo.",
+    "price": 200,
+    "category": "Postres"
   }
 ]

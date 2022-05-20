@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loader from 'components/Common/Loader';
 import ItemList from './ItemList';
-import Products from 'assets/products.json';
+import { FetchProducts } from 'api';
 
 const ItemListContainer = () => {
   const [productsList, setProductsList] = useState([]);
@@ -11,13 +11,7 @@ const ItemListContainer = () => {
 
   const getProducts = () => {
 
-    const fetchProducts = new Promise ((res, rej) => {
-      setTimeout(()=>{
-        res(Products)
-      },3000)
-    });
-
-    fetchProducts.then(
+    FetchProducts().then(
       (result) => {
         setProductsList(result);
       }

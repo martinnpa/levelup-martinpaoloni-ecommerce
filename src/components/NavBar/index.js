@@ -7,21 +7,24 @@ import {
 import PizzasMenu from './PizzasMenu';
 import Cart from './Cart';
 import logo from 'assets/coderpizza2.png';
+import {Link} from 'react-router-dom';
 
 const index = () => {
     
 const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial']
 
   return (
-    <Popover className="relative bg-primary-dark">
+    <Popover className="relative z-50 bg-primary-dark">
       <div className="px-4 mx-auto max-w-7xl sm:px-6">
         <div className="grid items-center justify-between grid-cols-8 py-2">
           <div className="col-span-4 md:col-span-2">
+              <Link to={"/"}>
               <img
                 className="w-auto h-max-20"
                 src={logo}
                 alt="logo"
               />
+              </Link>
           </div>
           <nav className="hidden md:col-span-6 md:flex">
             <ul className="flex justify-center gap-10 mx-auto list-none">

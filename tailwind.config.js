@@ -22,7 +22,10 @@ module.exports = {
           DEFAULT: 'var(--color-grey)',
           1: '#444',
           2: '#8d8d8d',
-        }
+        },
+        warning: 'var(--color-warning)',
+        alert: 'var(--color-alert)',
+        success: 'var(--color-success)'
       },
       fontSize: {
         '1em': '1em',
@@ -38,5 +41,7 @@ module.exports = {
       backgroundColor: ['disabled']
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

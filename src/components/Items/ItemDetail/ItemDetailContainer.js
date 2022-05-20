@@ -1,43 +1,33 @@
+//@ts-check
 import React, { useEffect, useState } from 'react';
+import {useParams } from 'react-router-dom';
 import Loader from 'components/Common/Loader';
 import ItemDetail from './ItemDetail';
+import { FetchProduct } from 'api';
 
 const ItemDetailContainer = () => {
+
+  let {itemId} = useParams();
+  let itemIdNumber = parseInt(itemId);
+
   const [product, setProduct] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const getItem = () => {
-    const fetchProduct = new Promise((res,rej) => {
-      setTimeout(()=>{
-        res({
-          "id": 4,
-          "name": "4 Formaggis",
-          "photo": "https://img.pizza/499/304",
-          "gallery": ["https://img.pizza/499/304", "https://img.pizza/500/300", "https://img.pizza/900/500"],
-          "stock": 27,
-          "description": "Salsa, Muzarella, Gorgonzola, Parmesano, Fontina, Olivas verdes.",
-          "price": 1050
-        })
-      }, 3000)
-    });
+  const getItem = (id) => {
 
-    fetchProduct.
-    then( (result) => {
-      setProduct(result)
+    FetchProduct(id).then( (result) => {
+      setProduct(result);
     })
     .catch( (error) => {
         setError(''+error);
     })
     .finally(() => setLoading(false));
-
   }
 
   useEffect(()=>{
-    getItem();
-  },[])
-
-
+    getItem(itemIdNumber);
+  },[itemIdNumber])
 
   return (
     <>

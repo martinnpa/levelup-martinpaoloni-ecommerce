@@ -9,9 +9,13 @@
   --color-secundary: #e0ff00;
   --color-secundary-alt: #ffff00;
   --color-secundary-lilac: #ea90ff;
+  --color-secundary-lilac-n: 234, 144, 255;
   /* --color-primary-green: #e0ff00;
   --color-primary-yellow: #ffff00; */
   --color-grey: #666;
+  --color-alert: #ef4444; /*red 500*/
+  --color-warning: #fbbf24; /*amber 400*/
+  --color-success: #22c55e;  /* Lime 600 */
   @apply bg-primary;
 }
 
