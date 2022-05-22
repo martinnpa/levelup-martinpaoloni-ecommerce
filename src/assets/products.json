@@ -140,7 +140,7 @@
     "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16682.jpeg",
     "stock": 50,
     "description": "Se puede acompañar con crema y/o dulce de leche.",
-    "price": 200,
+    "price": 370,
     "category": "Postres"
   },
   {
@@ -149,7 +149,7 @@
     "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16962.jpg",
     "stock": 20,
     "description": "Dulce de leche, avellanas, chocolate. Exquisito.",
-    "price": 200,
+    "price": 350,
     "category": "Postres"
   },
   {
@@ -158,7 +158,7 @@
     "photo": "https://cocinerosargentinos.com/content/recipes/500x500/recipes.16956.jpg",
     "stock": 20,
     "description": "Especialidad de nuestro chef, recomendadisimo.",
-    "price": 200,
+    "price": 400,
     "category": "Postres"
   }
 ]

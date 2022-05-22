@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Popover, Transition, Menu } from '@headlessui/react';
 import {
   MenuIcon,
@@ -8,10 +8,15 @@ import PizzasMenu from './PizzasMenu';
 import Cart from './Cart';
 import logo from 'assets/coderpizza2.png';
 import {Link} from 'react-router-dom';
+import { FetchCategories } from 'api';
 
-const index = () => {
-    
-const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial']
+const Index = () => {
+
+  const [categories, setCategories] = useState([]);
+
+  FetchCategories().then((result)=>{
+    setCategories(result);
+  }).catch((errror) => {alert('No se obtuvieron las categorías')})
 
   return (
     <Popover className="relative z-50 bg-primary-dark">
@@ -26,8 +31,8 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
               />
               </Link>
           </div>
-          <nav className="hidden md:col-span-6 md:flex">
-            <ul className="flex justify-center gap-10 mx-auto list-none">
+          <nav className="z-50 hidden md:col-span-6 md:flex">
+            <ul className="z-50 flex justify-center gap-10 mx-auto list-none">
                 <li>
                     <PizzasMenu categories={categories}/>
                 </li>
@@ -76,4 +81,4 @@ const categories = ['Muzarella','Napolitana', 'Fugazzeta', '4 Quesos', 'Especial
   )
 }
 
-export default index;
+export default Index;

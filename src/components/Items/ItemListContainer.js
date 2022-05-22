@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'components/Common/Loader';
 import ItemList from './ItemList';
 import { FetchProducts } from 'api';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
   const [productsList, setProductsList] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  let {id} = useParams();
 
-  const getProducts = () => {
-
-    FetchProducts().then(
+  const getProducts = (id) => {
+    setLoading(true);
+    FetchProducts(id).then(
       (result) => {
         setProductsList(result);
       }
@@ -21,12 +23,16 @@ const ItemListContainer = () => {
       }
     )
     .finally(() => setLoading(false));
-
   }
 
   useEffect(()=>{
-    getProducts();
-  }, [])
+    /* if (id) {
+      getProducts(id);
+    } else {
+      getProducts();
+    } */
+    getProducts(id);
+  }, [id])
 
   if (error) {
     return <h1>Ha ocurrido un error, intente nuevamente más tarde o pongase en contacto a itsnotabugitsafeature@coderpizza.com</h1>

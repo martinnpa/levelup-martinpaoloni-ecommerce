@@ -1,10 +1,16 @@
 import React from 'react';
 import Products from 'assets/products.json';
 
-const FetchProducts = () => {
+const FetchProducts = (id = '') => {
+  // console.log('llego al fetch: '+id);
   return new Promise ((res, rej) => {
     setTimeout(()=>{
-      res(Products)
+      if (!id) {
+        res(Products)
+      } else {
+        const product = Products.filter(product => product.category === id);
+        res(product);
+      }
     },3000)
   });
 }
@@ -12,10 +18,29 @@ const FetchProducts = () => {
 const FetchProduct = (id) => {
   return new Promise((res,rej) => {
     setTimeout(()=>{
-      const productFiltered = Products.find(product => product.id === id);
-      res(productFiltered)
+      const product = Products.find(product => product.id === id);
+      res(product)
     }, 3000)
   });
 }
 
-export {FetchProducts, FetchProduct }
+/* const FetchProductsByCategory = (id) => {
+  return new Promise((res,rej) => {
+    setTimeout(()=>{
+      const productsFiltered = Products.filter(product => product.category === id);
+      res(productsFiltered)
+    }, 3000)
+  });
+} */
+
+
+const FetchCategories = () => {
+  return new Promise ((res, rej) => {
+    setTimeout(()=>{
+      let categories = [...new Set(Products.map(product => product.category))];
+      res(categories)
+    },3000)
+  });
+}
+
+export {FetchProducts, FetchProduct, FetchCategories }

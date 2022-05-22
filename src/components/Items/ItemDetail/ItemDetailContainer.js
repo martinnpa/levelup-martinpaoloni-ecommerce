@@ -7,8 +7,8 @@ import { FetchProduct } from 'api';
 
 const ItemDetailContainer = () => {
 
-  let {itemId} = useParams();
-  let itemIdNumber = parseInt(itemId);
+  const {itemId} = useParams();
+  const itemIdNumber = parseInt(itemId);
 
   const [product, setProduct] = useState({});
   const [error, setError] = useState("");
