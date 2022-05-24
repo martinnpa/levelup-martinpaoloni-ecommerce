@@ -3,20 +3,19 @@ import { Popover, Transition, Menu } from '@headlessui/react';
 import { groupBy } from 'components/Common/Functions';
 
 const CartList = ({productsCart, subTotal}) => {
-  const [groupedCats, setGroupedCats] = useState({});
+  const [groupedCats, setGroupedCats] = useState([]);
 
   const renderGroupedCartList = () => {
     if (groupedCats) {
-      let groupedCatsArr = Object.entries(groupedCats)
-      return groupedCatsArr.map((groupedCat, index)=>{
+      return groupedCats.map((groupedCat, index)=>{
         return (
         <div key={groupedCat[0]}>
-          <h3 className="font-bold text-md">{groupedCat[0]}</h3>
+          <h3 className="font-bold leading-8 text-md">{groupedCat[0]}</h3>
           <ul>
             {
             groupedCat[1].map( (cat, index) => {
               return (
-                <li key={index} className="flex justify-between">
+                <li key={index} className="flex justify-between pb-2 leading-none">
                   <span>{cat.name} <small>x{cat.qty}</small></span>
                   <span>${cat.price*cat.qty}</span>
                 </li>
@@ -31,8 +30,14 @@ const CartList = ({productsCart, subTotal}) => {
   }
 
   useEffect(()=>{
-    setGroupedCats(groupBy(productsCart, 'category'));
+    const grouped = groupBy(productsCart, 'category');
+    const groupedToArray = Object.entries(grouped);
+    setGroupedCats(groupedToArray);
   }, [productsCart])
+
+  useEffect(()=>{
+    console.log(groupedCats);
+  }, [groupedCats])
 
   useEffect(()=>{
     // localStorage.clear();
@@ -48,12 +53,18 @@ const CartList = ({productsCart, subTotal}) => {
     leaveTo="opacity-0 translate-y-1"
     >
         <Popover.Panel className="absolute z-10 transform -translate-x-1/2 left-1/2">
-        <div className="p-4 text-left bg-white w-60 text-primary text-md">
-          {renderGroupedCartList()}
-          <p className="flex justify-between pt-2 mt-3 font-bold border-t border-secundary-alt">
-            Subtotal: <span>${subTotal}</span>
-          </p>
-        </div>
+          <div className="p-4 text-left bg-white w-60 text-primary text-md">
+            {groupedCats.length ? 
+            <>
+              {renderGroupedCartList()}
+              <p className="flex justify-between pt-2 mt-3 font-bold border-t border-secundary-alt">
+                Subtotal: <span>${subTotal}</span>
+              </p>
+            </>
+            :
+            <p className="text-center">Todavia no agregaste ningun producto.</p>
+            }
+          </div>
         </Popover.Panel>
     </Transition>
   )
