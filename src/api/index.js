@@ -1,13 +1,13 @@
 import React from 'react';
 import Products from './products.json';
 
-const FetchProducts = (id = '') => {
+const FetchProducts = (categoryId = '') => {
   return new Promise ((res, rej) => {
     setTimeout(()=>{
-      if (!id) {
+      if (!categoryId) {
         res(Products)
       } else {
-        const product = Products.filter(product => product.category === id);
+        const product = Products.filter(product => product.category === categoryId);
         res(product);
       }
     },3000)

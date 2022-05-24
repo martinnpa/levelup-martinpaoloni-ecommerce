@@ -9,11 +9,11 @@ const ItemListContainer = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  let {id} = useParams();
+  let {categoryId} = useParams();
 
-  const getProducts = (id) => {
+  const getProducts = (categoryId) => {
     setLoading(true);
-    FetchProducts(id).then(
+    FetchProducts(categoryId).then(
       (result) => {
         setProductsList(result);
       }
@@ -26,13 +26,13 @@ const ItemListContainer = () => {
   }
 
   useEffect(()=>{
-    /* if (id) {
-      getProducts(id);
+    /* if (categoryId) {
+      getProducts(categoryId);
     } else {
       getProducts();
     } */
-    getProducts(id);
-  }, [id])
+    getProducts(categoryId);
+  }, [categoryId])
 
   if (error) {
     return <h1>Ha ocurrido un error, intente nuevamente más tarde o pongase en contacto a itsnotabugitsafeature@coderpizza.com</h1>
