@@ -1,19 +1,24 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useContext, useEffect } from 'react';
 import { Popover, Transition, Menu } from '@headlessui/react';
 import {
   MenuIcon,
   XIcon,
 } from '@heroicons/react/outline';
 import PizzasMenu from './PizzasMenu';
-import Cart from './Cart';
+import Cart from './cart/Cart';
 import logo from 'assets/coderpizza2.png';
 import {Link} from 'react-router-dom';
 import { FetchCategories } from 'api';
+import { generalContext } from 'context';
 
 const Index = () => {
-
+  const {cart, subTotal} = useContext(generalContext);
   const [categories, setCategories] = useState([]);
 
+  useEffect(()=>{
+    if (cart) console.log(cart);
+  },[cart])
+  
   FetchCategories().then((result)=>{
     setCategories(result);
   }).catch((errror) => {alert('No se obtuvieron las categorías')})
@@ -22,6 +27,7 @@ const Index = () => {
     <Popover className="relative z-50 bg-primary-dark">
       <div className="px-4 mx-auto max-w-7xl sm:px-6">
         <div className="grid items-center justify-between grid-cols-8 py-2">
+
           <div className="col-span-4 md:col-span-2">
               <Link to={"/"}>
               <img
@@ -31,18 +37,19 @@ const Index = () => {
               />
               </Link>
           </div>
+
           <nav className="z-50 hidden md:col-span-6 md:flex">
             <ul className="z-50 flex justify-center gap-10 mx-auto list-none">
                 <li>
                     <PizzasMenu categories={categories}/>
                 </li>
                 <li><a href="#">Contacto</a></li>
-                
             </ul>
             <div className="text-center w-52">
-              <Cart items={4}/>
+              <Cart productsCart={cart} subTotal={subTotal}/>
             </div>
           </nav>
+
           <div className="block col-span-4 -my-2 -mr-2 text-right md:hidden">
             <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100">
               <MenuIcon className="w-6 h-6" aria-hidden="true" />

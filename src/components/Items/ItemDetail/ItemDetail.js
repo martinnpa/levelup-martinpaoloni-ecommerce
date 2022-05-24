@@ -56,7 +56,7 @@ const ItemDetail = ({product}) => {
       <div className="container relative z-10 p-4 mx-auto text-center text-white rounded-lg -mt-14 bg-primary-dark">
         {stock &&
           <div className="max-w-full mx-auto w-72">
-            <ItemCount stock={stock} initial={0} />
+            <ItemCount product={product} initial={0} />
           </div>
         }
       </div>

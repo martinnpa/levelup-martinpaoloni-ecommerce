@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+//@ts-check
+import React, {useContext, useState} from 'react';
 import styles from "./Button.module.css";
 import { ShoppingCartIcon } from '@heroicons/react/outline';
 import Button from 'components/Common/Button';
+import { generalContext } from 'context';
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({product, initial}) => {
+  const {addToCart} = useContext(generalContext);
+
+  const {id, name, photo, description, stock, price, category} = product;
+
   const [counter, setCounter] = useState(initial);
 
   const handleOperationSum = () => {
@@ -18,7 +24,15 @@ const ItemCount = ({stock, initial}) => {
     }
   };
 
-  const onAdd = () => alert('Aca va la función agregar');
+  const onAdd = () => {
+    addToCart({
+      id,
+      name,
+      price,
+      category,
+      qty: counter,
+    })
+  };
 
   return (
     <div className="relative z-30">
@@ -43,7 +57,7 @@ const ItemCount = ({stock, initial}) => {
         </button>
       </div>
       <div className="mt-3">
-        <Button className="mx-auto" disabled={counter===0} onClick={()=> onAdd()}>
+        <Button className="mx-auto" disabled={counter===0} onClick={onAdd}>
           <ShoppingCartIcon className="relative w-5 mr-1" style={{top: "2px"}}/> <span>Agregar</span>
         </Button>
       </div>

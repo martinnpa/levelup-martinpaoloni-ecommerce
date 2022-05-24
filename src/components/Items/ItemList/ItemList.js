@@ -3,8 +3,8 @@ import Item from './Item';
 
 const ItemList = ({productsList}) => {
   const renderProducts = () => {
-    return productsList.map((pizza) => {
-      return <Item key={pizza.id} pizza={pizza} initial={0} />
+    return productsList.map((product) => {
+      return <Item key={product.id} product={product} initial={0} />
     })
   }
   return (

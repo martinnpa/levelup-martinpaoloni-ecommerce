@@ -1,8 +1,7 @@
 import React from 'react';
-import Products from 'assets/products.json';
+import Products from './products.json';
 
 const FetchProducts = (id = '') => {
-  // console.log('llego al fetch: '+id);
   return new Promise ((res, rej) => {
     setTimeout(()=>{
       if (!id) {
