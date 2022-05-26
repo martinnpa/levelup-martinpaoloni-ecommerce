@@ -1,6 +1,7 @@
 import React, {Fragment, useContext, useEffect, useState} from 'react';
 import { Popover, Transition, Menu } from '@headlessui/react';
 import { groupBy } from 'components/Common/Functions';
+import Button from 'components/Common/Button';
 
 const CartList = ({productsCart, subTotal}) => {
   const [groupedCats, setGroupedCats] = useState([]);
@@ -39,9 +40,6 @@ const CartList = ({productsCart, subTotal}) => {
     console.log(groupedCats);
   }, [groupedCats])
 
-  useEffect(()=>{
-    // localStorage.clear();
-  }, [])
   return (
     <Transition
     as={Fragment}
@@ -53,13 +51,14 @@ const CartList = ({productsCart, subTotal}) => {
     leaveTo="opacity-0 translate-y-1"
     >
         <Popover.Panel className="absolute z-10 transform -translate-x-1/2 left-1/2">
-          <div className="p-4 text-left bg-white w-60 text-primary text-md">
+          <div className="w-64 p-4 text-left shadow-sm text-primary text-md bg-gradient-to-t from-white to-white shadow-secundary-alt">
             {groupedCats.length ? 
             <>
               {renderGroupedCartList()}
               <p className="flex justify-between pt-2 mt-3 font-bold border-t border-secundary-alt">
                 Subtotal: <span>${subTotal}</span>
               </p>
+              <Button className="w-full mt-3" color="primary" filled>Realizar compra</Button>
             </>
             :
             <p className="text-center">Todavia no agregaste ningun producto.</p>
