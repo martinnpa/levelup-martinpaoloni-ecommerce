@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const Button = ({disabled, className = '', onClick, children, filled, color = 'secundary'}) => {
 
-  //use this object because tailwind does not support dynamic classNames ex: bg-${styleColor}
+  // uso este objeto porque tailwind no soporta clases dinamicas como bg-${color}
   let colorButton = {};
   if (filled) {
       colorButton = {

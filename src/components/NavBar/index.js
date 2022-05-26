@@ -9,16 +9,11 @@ import Cart from './cart/Cart';
 import logo from 'assets/coderpizza2.png';
 import {Link} from 'react-router-dom';
 import { FetchCategories } from 'api';
-import { generalContext } from 'context';
+
 
 const Index = () => {
-  const {cart, subTotal} = useContext(generalContext);
   const [categories, setCategories] = useState([]);
 
-  useEffect(()=>{
-    if (cart) console.log(cart);
-  },[cart])
-  
   FetchCategories().then((result)=>{
     setCategories(result);
   }).catch((errror) => {alert('No se obtuvieron las categorías')})
@@ -46,7 +41,7 @@ const Index = () => {
                 <li><a href="#">Contacto</a></li>
             </ul>
             <div className="text-center w-52">
-              <Cart productsCart={cart} subTotal={subTotal}/>
+              <Cart/>
             </div>
           </nav>
 
