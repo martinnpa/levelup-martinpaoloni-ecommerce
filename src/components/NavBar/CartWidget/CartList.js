@@ -65,8 +65,7 @@ const CartList = ({productsCart, subTotal, removeFromCart}) => {
               <p className="flex justify-between pt-2 mt-3 font-bold border-t border-secundary-alt">
                 Subtotal: <span>${subTotal}</span>
               </p>
-              <Button className="w-full mt-3" color="primary"><Link to="/cart">Ver carrito en detalle</Link></Button>
-              <Button className="w-full mt-3" color="primary" filled onClick={() => alert('Aca te lleva al checkout')}>Realizar compra</Button>
+              <Link to="/cart" className="text-primary"><Button className="w-full mt-3" filled color="primary">Terminar mi compra</Button></Link>
             </>
             :
             <p className="text-center">Todavia no agregaste ningun producto.</p>

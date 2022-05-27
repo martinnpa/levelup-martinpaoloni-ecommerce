@@ -4,7 +4,7 @@ import { Popover } from "@headlessui/react";
 import CartList from "./CartList";
 import { generalContext } from "context";
 
-const Cart = () => {
+const Index = () => {
   const { cart, subTotal, removeFromCart } = useContext(generalContext);
 
   return (
@@ -22,4 +22,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Index;

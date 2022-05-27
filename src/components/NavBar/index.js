@@ -5,7 +5,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import PizzasMenu from './PizzasMenu';
-import Cart from './cart/Cart';
+import CartWidget from './CartWidget';
 import logo from 'assets/coderpizza2.png';
 import {Link} from 'react-router-dom';
 import { FetchCategories } from 'api';
@@ -40,7 +40,7 @@ const Index = () => {
                 </li>
             </ul>
             <div className="text-center w-52">
-              <Cart/>
+              <CartWidget/>
             </div>
           </nav>
 
