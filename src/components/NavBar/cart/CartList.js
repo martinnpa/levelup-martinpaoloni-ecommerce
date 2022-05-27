@@ -3,6 +3,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { groupBy } from 'components/Common/Functions';
 import Button from 'components/Common/Button';
 import { TrashIcon } from '@heroicons/react/outline';
+import { Link } from 'react-router-dom';
 
 const CartList = ({productsCart, subTotal, removeFromCart}) => {
   const [groupedCats, setGroupedCats] = useState([]);
@@ -26,7 +27,8 @@ const CartList = ({productsCart, subTotal, removeFromCart}) => {
                   <span>${product.price*product.qty}</span>
                     <button
                     onClick={()=>handleRemove(product.id)}
-                    className="absolute invisible duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:visible -left-4 group-hover:left-0 hover:text-red-900">
+                    className="absolute invisible duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:visible -left-4 group-hover:left-0 hover:text-red-900"
+                    >
                       <TrashIcon className="w-4 h-4" />
                     </button>
                 </li>
@@ -42,13 +44,8 @@ const CartList = ({productsCart, subTotal, removeFromCart}) => {
 
   useEffect(()=>{
     const grouped = groupBy(productsCart, 'category');
-    const groupedToArray = Object.entries(grouped);
-    setGroupedCats(groupedToArray);
+    setGroupedCats(grouped);
   }, [productsCart])
-
-  // useEffect(()=>{
-  //   console.log(groupedCats);
-  // }, [groupedCats])
 
   return (
     <Transition
@@ -62,13 +59,14 @@ const CartList = ({productsCart, subTotal, removeFromCart}) => {
     >
         <Popover.Panel className="absolute z-10 transform -translate-x-1/2 left-1/2">
           <div className="w-64 p-4 text-left shadow-sm text-primary text-md bg-gradient-to-t from-white to-white shadow-secundary-alt">
-            {groupedCats.length ? 
+            {groupedCats.length ?
             <>
               {renderGroupedCartList()}
               <p className="flex justify-between pt-2 mt-3 font-bold border-t border-secundary-alt">
                 Subtotal: <span>${subTotal}</span>
               </p>
-              <Button className="w-full mt-3" color="primary" filled>Realizar compra</Button>
+              <Button className="w-full mt-3" color="primary"><Link to="/cart">Ver carrito en detalle</Link></Button>
+              <Button className="w-full mt-3" color="primary" filled onClick={() => alert('Aca te lleva al checkout')}>Realizar compra</Button>
             </>
             :
             <p className="text-center">Todavia no agregaste ningun producto.</p>

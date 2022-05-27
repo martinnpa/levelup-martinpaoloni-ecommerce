@@ -8,7 +8,7 @@ import { generalContext } from 'context';
 const ItemCount = ({product, initial}) => {
   const {addToCart} = useContext(generalContext);
 
-  const {id, name, photo, description, stock, price, category} = product;
+  const {stock} = product;
 
   const [counter, setCounter] = useState(initial);
 
@@ -25,13 +25,7 @@ const ItemCount = ({product, initial}) => {
   };
 
   const onAdd = () => {
-    addToCart({
-      id,
-      name,
-      price,
-      category,
-      qty: counter,
-    })
+    addToCart({...product, qty: counter })
   };
 
   return (
@@ -65,4 +59,4 @@ const ItemCount = ({product, initial}) => {
   )
 }
 
-export default ItemCount
+export default ItemCount;

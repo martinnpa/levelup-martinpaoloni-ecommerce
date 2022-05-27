@@ -17,10 +17,8 @@ const Context = ({children}) => {
         newCart.push(item);
       }
       setCart([...newCart]);
-      // localStorage.cart = JSON.stringify([...newCart]);
     } else {
       setCart([...cart, item]);
-      // localStorage.cart = JSON.stringify([...cart, item]);
     }
   }
 

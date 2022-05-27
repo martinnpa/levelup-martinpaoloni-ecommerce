@@ -38,7 +38,6 @@ const Index = () => {
                 <li>
                     <PizzasMenu categories={categories}/>
                 </li>
-                <li><a href="#">Contacto</a></li>
             </ul>
             <div className="text-center w-52">
               <Cart/>

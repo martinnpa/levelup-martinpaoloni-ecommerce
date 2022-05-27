@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
 import { Popover } from "@headlessui/react";
 import CartList from "./CartList";
@@ -6,10 +6,6 @@ import { generalContext } from "context";
 
 const Cart = () => {
   const { cart, subTotal, removeFromCart } = useContext(generalContext);
-
-  // useEffect(() => {
-  //   if (cart) console.log(cart);
-  // }, [cart]);
 
   return (
     <Popover className="relative inline-block">

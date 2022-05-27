@@ -1,6 +1,7 @@
 import ItemListContainer from "components/Items/ItemList/ItemListContainer";
 import NavBar from "components/NavBar";
 import ItemDetailContainer from "components/Items/ItemDetail/ItemDetailContainer";
+import Cart from "components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
 
@@ -16,9 +17,10 @@ function App() {
               </header>
               <Routes>
                   <Route path="/" element={<ItemListContainer/>}/>
+                  <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
                   <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
-                  <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
+                  <Route path="/cart" element={<Cart/>}/>
               </Routes>
             </BrowserRouter>
         </div>
