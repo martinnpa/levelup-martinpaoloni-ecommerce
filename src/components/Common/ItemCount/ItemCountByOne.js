@@ -1,14 +1,12 @@
 //@ts-check
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import styles from "./Button.module.css";
-import { ShoppingCartIcon } from '@heroicons/react/outline';
-import Button from 'components/Common/Button';
 import { generalContext } from 'context';
 
-const ItemCount = ({product, initial}) => {
-  const {addToCart} = useContext(generalContext);
+const ItemCountByOne = ({product, initial}) => {
+  const {addToCart, removeFromCart} = useContext(generalContext);
 
-  const {stock} = product;
+  const {stock, id} = product;
 
   const [counter, setCounter] = useState(initial);
 
@@ -28,35 +26,38 @@ const ItemCount = ({product, initial}) => {
     addToCart({...product, qty: counter })
   };
 
+  useEffect(() => {
+    if (counter > 0) {
+      addToCart({...product, qty: counter })
+    } else {
+      removeFromCart(id);
+    }
+  }, [counter])
+  
   return (
     <div className="relative z-30">
       <p className="mb-3 text-xs text-center text-primary-on">Stock: {stock - counter}</p>
-      <div className="flex justify-between w-1/2 mx-auto">
+      <div className="flex justify-between mx-auto items-center">
         <button
-          className={styles.operation}
+          className="w-5 h-5 flex items-center justify-center border border-white border-opacity-20 hover:border-secundary-alt"
           onClick={() => handleOperationMinus()}
           disabled={counter === 0}
         >
           -
         </button>
 
-        <span className="text-primary-on">{counter}</span>
+        <span className="text-primary-on px-2">{counter}</span>
 
         <button
-          className={styles.operation}
+          className="w-5 h-5 flex items-center justify-center border border-white border-opacity-20 hover:border-secundary-alt"
           onClick={() => handleOperationSum()}
           disabled={counter === stock}
         >
           +
         </button>
       </div>
-      <div className="mt-3">
-        <Button className="mx-auto" disabled={counter===0} onClick={onAdd}>
-          <ShoppingCartIcon className="relative w-5 mr-1" style={{top: "2px"}}/> <span>Agregar</span>
-        </Button>
-      </div>
     </div>
   )
 }
 
-export default ItemCount;
+export default ItemCountByOne;
