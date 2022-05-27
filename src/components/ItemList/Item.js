@@ -1,4 +1,4 @@
-import ItemCount from '../ItemCount';
+import ItemCount from 'components/Common/ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
 import styles from './Item.module.css';
 import empanadaIcon from 'assets/empanada-color.png';

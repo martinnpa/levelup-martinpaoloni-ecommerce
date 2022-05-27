@@ -1,6 +1,6 @@
 //@ts-check
 import React, { useEffect, useState } from 'react';
-import ItemCount from '../ItemCount';
+import ItemCount from 'components/Common/ItemCount/ItemCount';
 import { ExclamationIcon, BellIcon, CheckCircleIcon, BanIcon } from '@heroicons/react/outline';
 import styles from './itemDetail.module.css';
 

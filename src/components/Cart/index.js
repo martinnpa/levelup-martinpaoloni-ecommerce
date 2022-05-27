@@ -3,7 +3,7 @@ import H1 from 'components/Common/H1';
 import { generalContext } from 'context';
 import { groupBy } from 'components/Common/Functions';
 import { TrashIcon } from '@heroicons/react/outline';
-import ItemCount from 'components/Items/ItemCount';
+import ItemCount from 'components/Common/ItemCount/ItemCount';
 
 const Index = () => {
   const { cart, subTotal, removeFromCart } = useContext(generalContext);
