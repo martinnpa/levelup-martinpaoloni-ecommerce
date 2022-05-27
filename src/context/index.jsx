@@ -27,6 +27,7 @@ const Context = ({children}) => {
     let productRemove = auxCart.findIndex( (product) => productId === product.id);
     auxCart.splice(productRemove,1);
     setCart(auxCart);
+    localStorage.cart = JSON.stringify(auxCart);
   }
 
   useEffect(()=>{
