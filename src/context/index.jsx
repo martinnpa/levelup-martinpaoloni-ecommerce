@@ -6,6 +6,12 @@ const Context = ({children}) => {
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState();
 
+  const isInCart = (id) => {
+    let index = cart.map(product => product.id).indexOf(id);
+    // return (index !== -1) ? true : false;
+    return (index !== -1) ? cart[index] : false;
+  }
+
   const addToCart = (item) => {
     /* si el item ya se encuentra en el carrito para no agregar elementos repetidos y asi poder sobreescribir */
     if (cart.length > 0) {
@@ -46,7 +52,7 @@ const Context = ({children}) => {
   },[cart])
 
   return (
-    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart }}>
+    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, isInCart }}>
       {children}
     </generalContext.Provider>
   )

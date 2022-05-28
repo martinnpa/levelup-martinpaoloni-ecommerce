@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Item from './Item';
+import { generalContext } from 'context';
 
 const ItemList = ({productsList}) => {
+  const {isInCart} = useContext(generalContext);
+
+  const handleIsInCart = (id) => {
+    return isInCart(id) ? isInCart(id).qty : 0;
+  }
+  
   const renderProducts = () => {
     return productsList.map((product) => {
-      return <Item key={product.id} product={product} initial={0} />
+      return <Item key={product.id} product={product} initial={()=>handleIsInCart(product.id)} />
     })
   }
   return (
