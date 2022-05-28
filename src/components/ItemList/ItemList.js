@@ -3,15 +3,11 @@ import Item from './Item';
 import { generalContext } from 'context';
 
 const ItemList = ({productsList}) => {
-  const {isInCart} = useContext(generalContext);
+  const {handleInitial} = useContext(generalContext);
 
-  const handleIsInCart = (id) => {
-    return isInCart(id) ? isInCart(id).qty : 0;
-  }
-  
   const renderProducts = () => {
     return productsList.map((product) => {
-      return <Item key={product.id} product={product} initial={()=>handleIsInCart(product.id)} />
+      return <Item key={product.id} product={product} initial={()=>handleInitial(product.id)} />
     })
   }
   return (

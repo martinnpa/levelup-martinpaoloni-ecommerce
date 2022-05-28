@@ -1,9 +1,10 @@
 //@ts-check
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {useParams } from 'react-router-dom';
 import Loader from 'components/Common/Loader';
 import ItemDetail from './ItemDetail';
 import { FetchProduct } from 'api';
+import { generalContext } from 'context';
 
 const ItemDetailContainer = () => {
 
@@ -13,6 +14,8 @@ const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const {handleInitial} = useContext(generalContext);
 
   const getItem = (id) => {
 
@@ -34,7 +37,7 @@ const ItemDetailContainer = () => {
     {loading && <Loader/>}
     {
     error ? <h2>Error, {error}</h2> :
-      <ItemDetail product={product}/>
+      <ItemDetail product={product} initial={handleInitial(product.id)}/>
     }
     </>
   )

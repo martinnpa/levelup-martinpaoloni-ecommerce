@@ -5,7 +5,7 @@ import { ExclamationIcon, BellIcon, CheckCircleIcon, BanIcon } from '@heroicons/
 import styles from './itemDetail.module.css';
 
 
-const ItemDetail = ({product}) => {
+const ItemDetail = ({product, initial}) => {
   const {stock, name, description, price, photo} = product;
   const [stockLabel, setStockLabel] = useState("");
 
@@ -56,7 +56,7 @@ const ItemDetail = ({product}) => {
       <div className="container relative z-10 p-4 mx-auto text-center text-white rounded-lg -mt-14 bg-primary-dark">
         {stock &&
           <div className="max-w-full mx-auto w-72">
-            <ItemCount product={product} initial={0} />
+            <ItemCount product={product} initial={initial} />
           </div>
         }
       </div>

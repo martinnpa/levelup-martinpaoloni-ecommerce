@@ -6,10 +6,9 @@ const Context = ({children}) => {
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState();
 
-  const isInCart = (id) => {
+  const handleInitial = (id) => {
     let index = cart.map(product => product.id).indexOf(id);
-    // return (index !== -1) ? true : false;
-    return (index !== -1) ? cart[index] : false;
+    return (index !== -1) ? cart[index].qty : 0;
   }
 
   const addToCart = (item) => {
@@ -52,7 +51,7 @@ const Context = ({children}) => {
   },[cart])
 
   return (
-    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, isInCart }}>
+    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial }}>
       {children}
     </generalContext.Provider>
   )
