@@ -29,11 +29,11 @@ const Item = ({product, initial}) => {
       }
       <Link to={`/item/${id}`} key={id} className="absolute inset-0"></Link>
       <img className="object-cover w-full h-40" src={photo} alt={name}/>
-      <div className="px-2 pt-1 pb-4">
+      <div className="px-2 pt-1 pb-2">
         <h2 className="relative pl-8 mb-2 font-bold"><img src={icons[category]} alt={category} className="absolute left-0 object-contain h-6"/> {name}</h2>
         <p className="overflow-hidden text-sm text-ellipsis h-11 line-clamp-2">{description}</p>
         <hr className="mt-2 mb-4 border-t border-secundary opacity-10"/>
-        <ItemCount product={product} initial={initial} />
+        <ItemCount product={product} initial={initial(id)} />
       </div>
     </div>
   )

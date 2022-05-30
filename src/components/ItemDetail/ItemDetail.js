@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemCount from 'components/Common/ItemCount/ItemCount';
 import { ExclamationIcon, BellIcon, CheckCircleIcon, BanIcon } from '@heroicons/react/outline';
-import styles from './itemDetail.module.css';
-
 
 const ItemDetail = ({product, initial}) => {
   const {stock, name, description, price, photo} = product;
@@ -11,10 +9,10 @@ const ItemDetail = ({product, initial}) => {
 
 
   const styleStock = {
-    'Bajo': {className: 'bg-alert', icon: <ExclamationIcon/>},
-    "Medio": {className: 'bg-warning', icon: <BellIcon/>},
-    'Alto': {className:'bg-success', icon: <CheckCircleIcon/>},
-    'No hay stock': {className: 'bg-gray', icon: <BanIcon/>}
+    'Bajo': {className: 'bg-alert', icon: <ExclamationIcon style={{width:"15px", display: "inline"}}/>},
+    "Medio": {className: 'bg-warning', icon: <BellIcon style={{width:"15px", display: "inline"}}/>},
+    'Alto': {className:'bg-success', icon: <CheckCircleIcon style={{width:"15px", display: "inline"}}/>},
+    'No hay stock': {className: 'bg-gray', icon: <BanIcon style={{width:"15px", display: "inline"}}/>}
   }
 
   useEffect(()=>{
@@ -43,7 +41,7 @@ const ItemDetail = ({product, initial}) => {
             </p>
 
             {stockLabel &&
-              <span className={`${styleStock[stockLabel].className} ${styles.stockLabel} py-2 px-3`}>
+              <span className={`${styleStock[stockLabel].className} py-2 px-3`}>
                 Stock: {stockLabel} {styleStock[stockLabel].icon}
               </span>
             }
