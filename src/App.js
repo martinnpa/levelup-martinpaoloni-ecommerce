@@ -4,6 +4,9 @@ import ItemDetailContainer from "components/ItemDetail/ItemDetailContainer";
 import Cart from "components/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
+import FireBaseDoc from "components/FirebaseDoc";
+import Firebasedocs from "components/FirebaseDocs";
+// import FirebaseAdd from "components/FirebaseAdd";
 
 function App() {
 
@@ -16,6 +19,7 @@ function App() {
                   <NavBar/>
               </header>
               <Routes>
+                  <Route path="/test" element={<Firebasedocs/>}/>
                   <Route path="/" element={<ItemListContainer/>}/>
                   <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>

@@ -14,9 +14,13 @@ import { FetchCategories } from 'api';
 const Index = () => {
   const [categories, setCategories] = useState([]);
 
-  FetchCategories().then((result)=>{
-    setCategories(result);
-  }).catch((errror) => {alert('No se obtuvieron las categorías')})
+
+  useEffect(() => {
+    FetchCategories().then( (result) => {
+      setCategories(result);
+    }).catch( error => console.error(error) )
+  }, [])
+
 
   return (
     <Popover className="relative z-50 bg-primary-dark">

@@ -4,12 +4,13 @@ import {useParams } from 'react-router-dom';
 import Loader from 'components/Common/Loader';
 import ItemDetail from './ItemDetail';
 import { FetchProduct } from 'api';
+import { FetchProduct2 } from 'api';
 import { generalContext } from 'context';
 
 const ItemDetailContainer = () => {
 
   const {itemId} = useParams();
-  const itemIdNumber = parseInt(itemId);
+  // const itemIdNumber = parseInt(itemId);
 
   const [product, setProduct] = useState({});
   const [error, setError] = useState("");
@@ -18,19 +19,35 @@ const ItemDetailContainer = () => {
   const {handleInitial} = useContext(generalContext);
 
   const getItem = (id) => {
-
     FetchProduct(id).then( (result) => {
       setProduct(result);
     })
     .catch( (error) => {
+        console.error(error);
         setError(''+error);
     })
     .finally(() => setLoading(false));
   }
 
+  const getItem2 = (id) => {
+    const fetch = async () => {
+      return await FetchProduct2(id);
+    }
+    fetch().then(result => {
+      if (result)
+      setProduct({...result.data(), id:result.id});
+    })
+    .catch( error => {
+      console.error(error);
+      setError(''+error);
+    })
+    .finally(() => setLoading(false));
+  }
+
   useEffect(()=>{
-    getItem(itemIdNumber);
-  },[itemIdNumber])
+    getItem(itemId);
+    // getItem2(itemId);
+  },[itemId])
 
   return (
     <>

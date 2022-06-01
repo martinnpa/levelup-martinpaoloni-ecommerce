@@ -26,11 +26,6 @@ const ItemListContainer = () => {
   }
 
   useEffect(()=>{
-    /* if (categoryId) {
-      getProducts(categoryId);
-    } else {
-      getProducts();
-    } */
     getProducts(categoryId);
   }, [categoryId])
 

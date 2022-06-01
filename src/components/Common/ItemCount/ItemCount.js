@@ -11,7 +11,6 @@ const ItemCount = ({product, initial}) => {
   const {stock} = product;
 
   const [counter, setCounter] = useState(handleInitial(product.id));
-  const [labelButton, setLabelButton] = useState("Agregar");
 
   const handleOperationSum = () => {
     if (counter !== stock) {
@@ -29,23 +28,18 @@ const ItemCount = ({product, initial}) => {
     addToCart({...product, qty: counter })
   };
 
-  useEffect(() => {
-    if (counter < initial) {
-      let diff = (initial - counter);
-      setLabelButton(`Quitar (${diff})`)
-    } else {
-      if (labelButton !== "Agregar") {
-        setLabelButton("Agregar");
-      }
-    }
-  }, [counter]);
+  const dynamicLabel = () => {
+    if (counter === initial) return "En el carrito";
+    if (counter < initial)  return `Quitar (${initial - counter})`;
+    return "Agregar";
+  }
 
 
   // Verificar si se puede optimizar, cuando cambia un producto del carrito vuelve a renderizar todos (es para cuando eliminas un producto el contador vuelva a 0)
+  // tal vez creando otro estado de elemento eliminado en el evento de eliminar para hacerle el setcounter a ese solo
   useEffect(() => {
       setCounter(handleInitial(product.id))
   }, [cart])
-
 
   return (
     <div className="relative z-30">
@@ -70,10 +64,10 @@ const ItemCount = ({product, initial}) => {
         </button>
       </div>
       <div className="mt-3">
-        {counter > 0 && initial !== counter &&
-        <Button className="mx-auto" disabled={counter===0} onClick={onAdd}>
+        {counter > 0 &&
+        <Button className="mx-auto" disabled={counter === initial} onClick={onAdd}>
           <ShoppingCartIcon className="relative w-5 mr-1" style={{top: "2px"}}/>
-          <span>{labelButton}</span>
+          <span> {dynamicLabel()} </span>
         </Button>
         }
       </div>
