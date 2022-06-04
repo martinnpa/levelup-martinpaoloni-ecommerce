@@ -11,6 +11,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Headless UI [Link](https://headlessui.dev/react/)
 - Heroicons [Link](https://heroicons.com/)
 - React router dom
+- Formik [Link](https://github.com/jaredpalmer/formik) --> Libreria más popular/usada para el manejo de formularios, recomendada en varios sitios.
+  - yup [Link] (https://github.com/jquense/yup) --> Libreria recomendada por Formik (se adaptan)
+
 
 ---
 ## Available Scripts

@@ -5,6 +5,7 @@ import { groupBy } from 'components/Common/Functions';
 import { TrashIcon } from '@heroicons/react/outline';
 import ItemCountByOne from 'components/Common/ItemCount/ItemCountByOne';
 import FormCheckout from './FormCheckout';
+import FormCheckout2 from './FormCheckout2';
 
 const Index = () => {
   const { cart, subTotal } = useContext(generalContext);
@@ -60,7 +61,7 @@ const Index = () => {
         </div>
       </div>
       <div className="col-span-3 bg-primary-dark sticky justify-center items-center flex py-6 px-10" style={{boxShadow: "inset 7px 8px 13px 0 rgb(0 0 0 / 85%)"}}>
-        <FormCheckout/>
+        <FormCheckout2 cart={cart}/>
       </div>
     </div>
     </>
