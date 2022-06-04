@@ -48,6 +48,21 @@ const FetchProduct2 = async (productId) => {
    return getDoc(productDocument)
 }
 
+const FetchOrder = (orderId) => {
+  return new Promise((res,rej) => {
+   const db = getFirestore();
+   const orderDocument = doc(db, "orders", orderId);
+
+   getDoc(orderDocument).then( (document) => {
+     if (document.data()) {
+       res(document.data());
+     } else {
+       rej("Error al intentar cargar la orden.");
+     }
+   })
+ });
+}
+
 const FetchCategories = () => {
   return new Promise ((res, rej) => {
     const db = getFirestore();
@@ -68,4 +83,4 @@ const FetchCategories = () => {
 }
 
 
-export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories}
+export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories, FetchOrder}

@@ -2,6 +2,7 @@ import ItemListContainer from "components/ItemList/ItemListContainer";
 import NavBar from "components/NavBar";
 import ItemDetailContainer from "components/ItemDetail/ItemDetailContainer";
 import Cart from "components/Cart";
+import NewOrder from "components/NewOrder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
 
@@ -21,6 +22,7 @@ function App() {
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
                   <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
                   <Route path="/cart" element={<Cart/>}/>
+                  <Route path="/new-order/:orderId" element={<NewOrder/>}/>
               </Routes>
             </BrowserRouter>
         </div>

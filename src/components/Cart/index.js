@@ -8,7 +8,7 @@ import FormCheckout from './FormCheckout';
 import FormCheckout2 from './FormCheckout2';
 
 const Index = () => {
-  const { cart, subTotal } = useContext(generalContext);
+  const { cart, resetCart, subTotal } = useContext(generalContext);
   const [grouped, setGrouped] = useState();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Index = () => {
         </div>
       </div>
       <div className="col-span-3 bg-primary-dark sticky justify-center items-center flex py-6 px-10" style={{boxShadow: "inset 7px 8px 13px 0 rgb(0 0 0 / 85%)"}}>
-        <FormCheckout2 cart={cart}/>
+        <FormCheckout2 cart={cart} resetCart={resetCart} total={subTotal}/>
       </div>
     </div>
     </>

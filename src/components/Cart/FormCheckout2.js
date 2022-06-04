@@ -8,7 +8,7 @@ import { FetchProduct } from 'api';
 import { collection, getFirestore, addDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 
-const FormCheckout = ({cart}) => {
+const FormCheckout = ({cart, resetCart, total }) => {
   const [order, setOrder] = useState({});
   const [noStock, setNoStock] = useState([]);
 
@@ -48,9 +48,9 @@ const FormCheckout = ({cart}) => {
           const db = getFirestore();
           const ordersCollection = collection(db, "orders");
           addDoc(ordersCollection, order ).then( ({id}) => {
-            alert('Su orden fue generada, su id de orden es: '+id);
+            resetCart();
+            navigate(`../new-order/${id}`, { replace: true })
           })
-          .then(()=>navigate("/", { replace: true }))
         }
       })
 
@@ -60,8 +60,6 @@ const FormCheckout = ({cart}) => {
   // useEffect(() => {
   //   console.log(noStock.length)
   // }, [noStock])
-  
-
 
 
   return (
@@ -71,7 +69,7 @@ const FormCheckout = ({cart}) => {
         validationSchema={
           Yup.object({
             name: Yup.string()
-            .max(15, 'No puede exceder 15 caracteres.')
+            .max(20, 'No puede exceder 20 caracteres.')
             .required('Debe completar el campo'),
             phone: Yup.string()
             .max(20, 'No puede contener más de 20 caracteres.')
@@ -84,7 +82,8 @@ const FormCheckout = ({cart}) => {
         onSubmit={values => {
           let newOrder = {
             products: [...cart],
-            buyer: values
+            buyer: values,
+            total: total
           }
           setOrder(newOrder);
         }}

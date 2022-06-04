@@ -35,6 +35,10 @@ const Context = ({children}) => {
     localStorage.cart = JSON.stringify(auxCart);
   }
 
+  const resetCart = () => {
+    setCart([]);
+  }
+
   useEffect(()=>{
     if (localStorage.cart) {
       let localCart = JSON.parse(localStorage.cart);
@@ -51,7 +55,7 @@ const Context = ({children}) => {
   },[cart])
 
   return (
-    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial }}>
+    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial, resetCart }}>
       {children}
     </generalContext.Provider>
   )
