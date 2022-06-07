@@ -76,7 +76,7 @@ const NewOrder = () => {
           </div>
       </>
       :
-      <h2 className="text-lg">Numero de orden inexistente </h2>
+      <h2 className="text-lg">Número de orden inexistente </h2>
     }
     </div>
   )

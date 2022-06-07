@@ -5,12 +5,11 @@ import Button from 'components/Common/Button';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FetchProduct, NewOrder, UpdateStock } from 'api';
-import { collection, getFirestore, addDoc, Timestamp } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import Spinner from 'components/Common/Spinner';
 
 const FormCheckout = ({cart, resetCart, total }) => {
-  // const [order, setOrder] = useState({});
   const [noStock, setNoStock] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
@@ -28,7 +27,7 @@ const FormCheckout = ({cart, resetCart, total }) => {
   focus-visible:outline-0`;
 
 
-const ifStockSubmitOrder = (order) => {
+const submitOrder = (order) => {
   if (Object.keys(order).length > 0) {
     setLoading(true);
 
@@ -50,7 +49,6 @@ const ifStockSubmitOrder = (order) => {
         setNoStock(filterUndefined);
         setLoading(false);
       } else {
-        // aca tengo que hacer un map de los objetos actualizarles el stock hacer un promise all y ahi setear la orden nueva.
         const updateStock = cart.map(product => {
           return UpdateStock(product.id, product.qty).then(result => {
           }).catch(error=>{
@@ -80,18 +78,6 @@ const ifStockSubmitOrder = (order) => {
   }
 }
 
-  // useEffect(() => {
-  //   console.log(noStock.length)
-  //   console.log(noStock)
-  // }, [noStock])
-
-  // useEffect(()=>{
-  //   let time = Timestamp.fromDate(new Date(Date.now()));
-  //   console.log(time);
-  //   console.log(time.toDate());
-  // }, [])
-
-
   return (
     <>
       <Formik
@@ -109,14 +95,13 @@ const ifStockSubmitOrder = (order) => {
           })
         }
         onSubmit={values => {
-          let newOrder = {
+          const newOrder = {
             products: [...cart],
             buyer: values,
             total: total,
             date: Timestamp.fromDate(new Date(Date.now())),
-
           }
-          ifStockSubmitOrder(newOrder);
+          submitOrder(newOrder);
         }}
       >
         <Form className="w-full mb-5">

@@ -6,16 +6,26 @@ import { TrashIcon } from '@heroicons/react/outline';
 import ItemCountByOne from 'components/Common/ItemCount/ItemCountByOne';
 import FormCheckout from './FormCheckout';
 import FormCheckout3 from './FormCheckout2';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
-  const { cart, resetCart, subTotal } = useContext(generalContext);
+  const { cart, resetCart, subTotal, removeFromCart } = useContext(generalContext);
   const [grouped, setGrouped] = useState();
 
   useEffect(() => {
     if (cart) {
       setGrouped(groupBy(cart, 'category'));
     }
+    console.log(cart.length)
   }, [cart])
+
+
+  if (cart.length === 0) return (
+    <div className="text-center py-10 px-2">
+      <h2 className="text-2xl font-bold mb-2">Su carrito está vacío.</h2>
+      <p><Link to="/" className="text-secundary hover:text-secundary-lilac">Ver productos.</Link></p>
+    </div>
+  )
 
   return (
     <>
@@ -33,7 +43,7 @@ const Index = () => {
               {
                 category[1].map((product) => (
                   <div key={product.id} className="relative items-center justify-between max-w-sm px-4 py-2 mx-auto mb-4 text-center rounded shadow-xl shadow-primary-dark bg-primary-light md:text-left sm:block md:flex md:max-w-none">
-                    <button className="absolute self-stretch hover:text-secundary left-3 top-3 md:static"><TrashIcon className="w-4"/></button>
+                    <button className="absolute self-stretch hover:text-secundary left-3 top-3 md:static" onClick={()=>removeFromCart(product.id)}><TrashIcon className="w-4"/></button>
                     <img src={product.photo} alt={product.name} className="object-cover w-20 mx-auto border-2 rounded h-14 border-secundary md:mx-0"/>
                     <div className="md:w-64">
                       <h3>{product.name}</h3>
