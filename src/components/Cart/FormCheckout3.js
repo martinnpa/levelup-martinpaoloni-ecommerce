@@ -4,8 +4,8 @@ import H1 from 'components/Common/H1';
 import Button from 'components/Common/Button';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { FetchProduct, NewOrder, UpdateStock } from 'api';
-import { collection, getFirestore, addDoc, Timestamp } from "firebase/firestore";
+import { FetchProduct2, NewOrder, UpdateStock } from 'api';
+import { collection, getFirestore, addDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import Spinner from 'components/Common/Spinner';
 
@@ -13,7 +13,7 @@ const FormCheckout = ({cart, resetCart, total }) => {
   // const [order, setOrder] = useState({});
   const [noStock, setNoStock] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState([]);
 
   let navigate = useNavigate()
 
@@ -29,67 +29,39 @@ const FormCheckout = ({cart, resetCart, total }) => {
 
 
 const ifStockSubmitOrder = (order) => {
-  if (Object.keys(order).length > 0) {
+  if (Object.keys(order).length) {
     setLoading(true);
-
+    const fetch = async () => {
+      return await FetchProduct2('product.id');
+    }
     const controlStock = cart.map(product => {
-      return FetchProduct(product.id).then(result => {
-        if (result.stock < product.qty) {
+      return fetch().then((result) => {
+        console.log('fetch')
+        if (result.data().stock < product.qty) {
           // Productos sin stock
           if (product.name !== 'undefined') {
             return  product.name;
           }
         }
-      }).catch(error => {throw error;})
+      }).catch(eror => {throw eror})
     });
-
     Promise.all(controlStock)
     .then( result => {
+      console.log('promise all ctrl stock');
       const filterUndefined = result.filter(item => item);
       if (filterUndefined.length > 0) {
-        setNoStock(filterUndefined);
         setLoading(false);
+        setNoStock(filterUndefined);
       } else {
-        // aca tengo que hacer un map de los objetos actualizarles el stock hacer un promise all y ahi setear la orden nueva.
-        const updateStock = cart.map(product => {
-          return UpdateStock(product.id, product.qty).then(result => {
-          }).catch(error=>{
-            throw error;
-          });
-        });
-        Promise.all(updateStock).then(result => {
-            NewOrder(order).then((id) => {
-              resetCart();
-              navigate(`../new-order/${id}`, { replace: true })
-            }).catch((error) => {
-              setErrors('Ocurrió un problema al generar su orden, intente nuevamente más tarde.');
-              console.error(error);
-            })
-          setLoading(false);
-        }).catch(error => {
-          console.error(error);
-          setErrors('Ocurrió un problema al generar su orden, intente nuevamente más tarde.');
-          setLoading(false);
-        });
+        alert('bien');
       }
-    }).catch(error=> {
-      console.log(error);
-      setLoading(false);
-      setErrors('Ocurrió un problema inesperado, intente nuevamente más tarde.');
-    })
+    }).catch(error=> console.log(error))
   }
 }
 
   // useEffect(() => {
   //   console.log(noStock.length)
-  //   console.log(noStock)
   // }, [noStock])
-
-  // useEffect(()=>{
-  //   let time = Timestamp.fromDate(new Date(Date.now()));
-  //   console.log(time);
-  //   console.log(time.toDate());
-  // }, [])
 
 
   return (
@@ -104,7 +76,8 @@ const ifStockSubmitOrder = (order) => {
             phone: Yup.string()
             .max(20, 'No puede contener más de 20 caracteres.')
             .min(5, 'Debe tener contener por lo menos 5 números')
-            .required('Ingrese un teléfono'),
+            .required('Ingrese un teléfono')
+            ,
             email: Yup.string().email('Ingrese un email valido.').required('Ingrese un email'),
           })
         }
@@ -112,14 +85,12 @@ const ifStockSubmitOrder = (order) => {
           let newOrder = {
             products: [...cart],
             buyer: values,
-            total: total,
-            date: Timestamp.fromDate(new Date(Date.now())),
-
+            total: total
           }
           ifStockSubmitOrder(newOrder);
         }}
       >
-        <Form className="w-full mb-5">
+        <Form className="w-full">
           <H1 className="mb-8 text-center">Completa tu orden</H1>
 
           <Field className={`${style}`} type="text" name="name" placeholder="Nombre"/>
@@ -134,27 +105,13 @@ const ifStockSubmitOrder = (order) => {
           <Button type="submit" className="block w-full py-2 mt-8" filled disabled={loading}>
             Realizar compra
           </Button>
-        </Form>
-      </Formik>
-      {loading && 
+          {loading && 
             <div className="px-2 pt-8 text-center">
               <Spinner/>
             </div>
           }
-          {errors &&
-          <p className="text-center">{errors}</p>
-          }
-
-          {noStock.length > 0 &&
-            <>
-              <p>No se pudo realizar la orden, nos quedamos sin stock en:</p>
-              <ul className="list-disc marker:text-secundary-alt">
-              { noStock.map(((product, index) => {
-                return <li key={index}>{product}</li>
-              })) }
-              </ul>
-            </>
-          }
+        </Form>
+      </Formik>
     </>
   )
 }

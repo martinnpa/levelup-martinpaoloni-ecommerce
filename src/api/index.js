@@ -1,5 +1,5 @@
 import React from 'react';
-import {collection, doc, getDoc, getDocs, getFirestore, query, where} from 'firebase/firestore';
+import {collection, doc, getDoc, getDocs, getFirestore, query, where, addDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
 
 const FetchProducts = (categoryId = '') => {
   return new Promise ((res, rej) => {
@@ -32,11 +32,11 @@ const FetchProduct = (productId) => {
     const productDocument = doc(db, "products", productId);
 
     getDoc(productDocument).then( (document) => {
-      if (document) {
+      if (document.data()) {
         let product = {...document.data(), id: document.id}
         res(product);
       } else {
-        rej("Error intentar cargar los productos.");
+        rej("Error intentar cargar el producto");
       }
     })
   });
@@ -45,7 +45,7 @@ const FetchProduct = (productId) => {
 const FetchProduct2 = async (productId) => {
    const db = getFirestore();
    const productDocument = doc(db, "products", productId);
-   return getDoc(productDocument)
+   return getDoc(productDocument);
 }
 
 const FetchOrder = (orderId) => {
@@ -82,5 +82,47 @@ const FetchCategories = () => {
   });
 }
 
+const NewOrder = (order) => {
+  return new Promise ((res, rej) => {
+    const db = getFirestore();
+    const ordersCollection = collection(db, "orders");
+    addDoc(ordersCollection, order ).then( ({id}) => {
+      if (id) {
+        res(id)
+      } else {
+        rej("Error al intentar guardar la orden");
+      }
+    })
+  });
+}
 
-export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories, FetchOrder}
+const UpdateDocument = (collection, documentId, objectUpdated) => {
+  return new Promise ((res, rej) => {
+    const db = getFirestore();
+    const productDocument = doc(db, collection, documentId);
+
+    setDoc(productDocument, objectUpdated, { merge: true } ).then( (result) => {
+      if (result) {
+        console.log(result);
+        res(result);
+      } else {
+        rej("Error al intentar actualizar");
+      }
+    });
+  });
+}
+
+const UpdateStock = (documentId, qty) => {
+  return new Promise ((res, rej) => {
+    const db = getFirestore();
+    const productDocument = doc(db, "products", documentId);
+
+    return updateDoc(productDocument, {stock: increment(-qty)} )
+    .then( (result) => {
+      res(result);
+    }).catch(error=> rej("Error al intentar actualizar stock"));
+  });
+}
+
+
+export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories, FetchOrder, NewOrder, UpdateDocument, UpdateStock}

@@ -5,6 +5,7 @@ import Cart from "components/Cart";
 import NewOrder from "components/NewOrder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
+import FirebaseUpdate from "[trash] Mock Files/FirebaseUpdate";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                   <NavBar/>
               </header>
               <Routes>
+                  <Route path="/test" element={<FirebaseUpdate/>}/>
                   <Route path="/" element={<ItemListContainer/>}/>
                   <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>

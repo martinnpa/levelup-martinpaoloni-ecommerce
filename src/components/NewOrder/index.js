@@ -8,6 +8,7 @@ const NewOrder = () => {
   const {orderId} = useParams();
   const [order, setOrder] = useState();
   const [loading, setLoading] = useState(true);
+  const [date, setDate] = useState("");
 
   const getOrder = (id) => {
     FetchOrder(id).then((result)=>{
@@ -21,6 +22,13 @@ const NewOrder = () => {
   useEffect(()=> {
     getOrder(orderId);
   }, [])
+
+  useEffect(()=> {
+    if (order?.date) {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute:'numeric', second:'numeric' };
+      setDate(order.date.toDate().toLocaleDateString("es-AR", options));
+    }
+  }, [order])
 
 
   if (loading) {
@@ -52,11 +60,15 @@ const NewOrder = () => {
         <p className="text-xl my-1 text-secundary">¡Gracias por confiar en nosotros!</p>
         <br/>
         <div className="relative max-w-sm mx-auto bg-white p-4 mt-10 shadow-lg shadow-black font-mono text-primary-dark">
+            {date && 
+            <p className="text-xs italic mb-2 -mt-1">{date}</p>
+            }
+            {/* <p>{order.date.toDate()}</p> */}
             <p className="text-left text-sm">{order.buyer.name} ({order.buyer.phone}) </p>
             <p className="text-left text-sm">{order.buyer.email}</p>
             <ul className="ticket border-2 mt-3 px-3 py-2 divide-y border-black/30 divide-black/50">
             {order.products.map((product)=>{
-              return <li key={product.id} className="flex justify-between">{product.name} x{product.qty}<span>{product.qty * product.price}</span></li>
+              return <li key={product.id} className="flex justify-between">{product.name} x{product.qty}<span> ${product.qty * product.price}</span></li>
             })}
             </ul>
             <hr/>

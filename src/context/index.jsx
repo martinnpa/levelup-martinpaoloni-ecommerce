@@ -37,6 +37,7 @@ const Context = ({children}) => {
 
   const resetCart = () => {
     setCart([]);
+    localStorage.cart = '';
   }
 
   useEffect(()=>{
