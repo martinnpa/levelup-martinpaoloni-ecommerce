@@ -1,5 +1,5 @@
 import ItemListContainer from "components/ItemList/ItemListContainer";
-import NavBar from "components/NavBar";
+import NavBar from "components/NavBar/";
 import ItemDetailContainer from "components/ItemDetail/ItemDetailContainer";
 import Cart from "components/Cart";
 import NewOrder from "components/NewOrder";
@@ -14,9 +14,9 @@ function App() {
       <Context>
         <div className="min-h-screen theme-dashboard">
             <BrowserRouter>
-              <header>
-                  <NavBar/>
-              </header>
+
+              <NavBar/>
+
               <Routes>
                   <Route path="/test" element={<FirebaseUpdate/>}/>
                   <Route path="/" element={<ItemListContainer/>}/>

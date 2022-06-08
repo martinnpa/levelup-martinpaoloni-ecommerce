@@ -53,3 +53,8 @@ code {
 a:hover {
   @apply text-secundary;
 }
+
+.container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}

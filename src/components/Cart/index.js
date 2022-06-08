@@ -16,7 +16,6 @@ const Index = () => {
     if (cart) {
       setGrouped(groupBy(cart, 'category'));
     }
-    console.log(cart.length)
   }, [cart])
 
 

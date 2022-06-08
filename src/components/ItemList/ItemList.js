@@ -12,7 +12,7 @@ const ItemList = ({productsList}) => {
   }
   return (
     <div className="container py-6 content">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {renderProducts()}
       </div>
     </div>

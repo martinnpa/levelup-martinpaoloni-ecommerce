@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const Button = ({disabled=false, className = '', onClick, children, filled = false, color = 'secundary', type='button'}) => {
+const Button = ({disabled=false, className = '', onClick, children, filled = false, color = 'secundary', type='button', style}) => {
 
   // uso este objeto porque tailwind no soporta clases dinamicas como bg-${color}
   let colorButton = {};
@@ -27,6 +27,7 @@ const Button = ({disabled=false, className = '', onClick, children, filled = fal
         disabled={disabled}
         onClick={onClick}
         type={type}
+        style={style}
         className={`${colorButton[color]} flex content-center justify-center px-4 border disabled:opacity-50 disabled:cursor-not-allowed ${className}`}>
         {children}
     </button>

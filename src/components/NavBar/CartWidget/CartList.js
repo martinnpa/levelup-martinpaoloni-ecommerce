@@ -57,7 +57,7 @@ const CartList = ({productsCart, subTotal, removeFromCart}) => {
     leaveFrom="opacity-100 translate-y-0"
     leaveTo="opacity-0 translate-y-1"
     >
-        <Popover.Panel className="absolute z-10 transform -translate-x-1/2 left-1/2">
+        <Popover.Panel className="absolute z-10 transform md:-translate-x-1/2 md:left-1/2 -left-full -translate-x-1/2">
           <div className="w-64 p-4 text-left shadow-sm text-primary text-md bg-gradient-to-t from-white to-white shadow-secundary-alt">
             {groupedCats.length ?
             <>
