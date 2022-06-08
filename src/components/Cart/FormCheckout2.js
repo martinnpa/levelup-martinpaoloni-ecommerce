@@ -19,11 +19,12 @@ const FormCheckout = ({cart, resetCart, total }) => {
 
   let style = `
   block w-full bg-transparent rounded-sm
-  border-b border-primary text-primary-on
+  border-b text-primary-on
   mt-4 py-2 px-2 leading-2
   placeholder:italic
   focus:shadow-inner focus:bg-black/40 focus:shadow-black
   focus:outline-0 focus:border-0
+  focus-visible:outline-none
   focus-visible:outline-0`;
 
 
@@ -80,6 +81,11 @@ const submitOrder = (order) => {
 
   return (
     <>
+    <style>{`
+    form input {
+      border-color: #444;
+    }
+    `}</style>
       <Formik
         initialValues={{ name: '', phone: '', email: '' }}
         validationSchema={
@@ -104,8 +110,8 @@ const submitOrder = (order) => {
           submitOrder(newOrder);
         }}
       >
-        <Form className="w-full mb-5">
-          <H1 className="mb-8 text-center">Completa tu orden</H1>
+        <Form className="w-full mb-5 sticky top-40">
+          <H1 className="mb-8 text-center">Finalizá tu pedido</H1>
 
           <Field className={`${style}`} type="text" name="name" placeholder="Nombre"/>
           <span className="text-sm font-light leading-tight text-red-500"><ErrorMessage name="name"/></span>

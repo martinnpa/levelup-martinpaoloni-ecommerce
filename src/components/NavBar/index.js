@@ -23,7 +23,6 @@ const Index = () => {
 
 
   return (
-    <header className="top-0 sticky z-50 bg-primary-dark">
       <Popover>
           <div className="grid items-center justify-between grid-cols-8 py-2 px-4 mx-auto max-w-7xl sm:px-6">
             <div className="col-span-4 md:col-span-2">
@@ -75,7 +74,6 @@ const Index = () => {
             </Transition>
           </div>
       </Popover>
-    </header>
   )
 }
 

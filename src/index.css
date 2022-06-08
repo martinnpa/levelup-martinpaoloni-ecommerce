@@ -7,6 +7,7 @@
   --color-primary-light: #202020;
   --color-primary-on: #fff;
   --color-secundary: #e0ff00;
+  --color-secundary-n: 224, 255, 0;
   --color-secundary-alt: #ffff00;
   --color-secundary-lilac: #ea90ff;
   --color-secundary-lilac-n: 234, 144, 255;
@@ -57,4 +58,10 @@ a:hover {
 .container {
   padding-right: 1rem;
   padding-left: 1rem;
+}
+form *:focus {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color:  var(--color-secundary-lilac);
+  outline-offset: 0;
 }
