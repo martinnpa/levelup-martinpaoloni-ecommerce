@@ -6,7 +6,7 @@ import Button from 'components/Common/Button';
 import { generalContext } from 'context';
 
 const ItemCount = ({product, initial}) => {
-  const {addToCart, cart, handleInitial} = useContext(generalContext);
+  const {addToCart, cart, handleInitial, removeFromCart, isInCart} = useContext(generalContext);
 
   const {stock} = product;
 
@@ -25,11 +25,15 @@ const ItemCount = ({product, initial}) => {
   };
 
   const onAdd = () => {
-    addToCart({...product, qty: counter })
+    if (counter > 0)  {
+      addToCart({...product, qty: counter })
+    } else {
+      removeFromCart(product.id);
+    }
   };
 
   const dynamicLabel = () => {
-    if (counter === initial) return "En el carrito";
+    if (counter === initial && counter !== 0) return "En el carrito";
     if (counter < initial)  return `Quitar (${initial - counter})`;
     return "Agregar";
   }
@@ -40,6 +44,7 @@ const ItemCount = ({product, initial}) => {
   useEffect(() => {
       setCounter(handleInitial(product.id))
   }, [cart])
+
 
   return (
     <div className="relative z-30">
@@ -64,7 +69,7 @@ const ItemCount = ({product, initial}) => {
         </button>
       </div>
       <div className="mt-3">
-        {counter > 0 &&
+        {((counter > 0) || (counter === 0 && isInCart(product.id) )) &&
         <Button className="mx-auto" disabled={counter === initial} onClick={onAdd}>
           <ShoppingCartIcon className="relative w-5 mr-1" style={{top: "2px"}}/>
           <span> {dynamicLabel()} </span>

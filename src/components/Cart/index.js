@@ -29,7 +29,7 @@ const Index = () => {
   return (
     <>
     <div className="grid grid-cols-10" style={{minHeight: "calc(100vh - 103px)"}}>
-      <div className="col-span-7 bg-primary-dark" style={{boxShadow: "inset 7px 8px 13px 0 rgb(0 0 0 / 85%)"}}>
+      <div className="col-span-10 md:col-span-6 lg:col-span-7 bg-primary-dark px-2" style={{boxShadow: "inset 7px 8px 13px 0 rgb(0 0 0 / 85%)"}}>
         <div className="py-6 w-full max-w-2xl rounded  mx-auto">
           <H1 className="mb-6 text-center text-primary-on">Tu pedido</H1>
           {
@@ -48,7 +48,7 @@ const Index = () => {
                       <h3>{product.name}</h3>
                       <p className="text-sm font-light">{product.description}</p>
                     </div>
-                    <h4>${product.price}</h4>
+                    <h4 className="text-xs">${product.price} c/u</h4>
                     <div className="mx-auto md:mx-0" style={{maxWidth:"120px"}}>
                       <ItemCountByOne product={product} initial={product.qty}/>
                     </div>
@@ -69,7 +69,7 @@ const Index = () => {
           }
         </div>
       </div>
-      <div className="col-span-3 px-10 pt-10 bg-primary-light shadow-xl shadow-black">
+      <div className="col-span-10 md:col-span-4 lg:col-span-3 px-10 pt-10 bg-primary-light shadow-xl shadow-black">
         <FormCheckout3 cart={cart} resetCart={resetCart} total={subTotal}/>
       </div>
     </div>

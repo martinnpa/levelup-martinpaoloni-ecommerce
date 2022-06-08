@@ -40,6 +40,11 @@ const Context = ({children}) => {
     localStorage.cart = '';
   }
 
+  const isInCart = (productId) => {
+    let index = cart.findIndex(element => element.id === productId)
+    return (index !== -1) ? true : false;
+}
+
   useEffect(()=>{
     if (localStorage.cart) {
       let localCart = JSON.parse(localStorage.cart);
@@ -56,7 +61,7 @@ const Context = ({children}) => {
   },[cart])
 
   return (
-    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial, resetCart }}>
+    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial, resetCart, isInCart}}>
       {children}
     </generalContext.Provider>
   )
