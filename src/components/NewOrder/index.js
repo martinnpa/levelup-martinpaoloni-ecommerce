@@ -25,7 +25,7 @@ const NewOrder = () => {
 
   useEffect(()=> {
     if (order?.date) {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute:'numeric', second:'numeric' };
+      const options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute:'numeric', second:'numeric' };
       setDate(order.date.toDate().toLocaleDateString("es-AR", options));
     }
   }, [order])
@@ -61,7 +61,7 @@ const NewOrder = () => {
         <br/>
         <div className="relative max-w-sm mx-auto bg-white p-4 mt-10 shadow-lg shadow-black font-mono text-primary-dark">
             {date && 
-            <p className="text-xs italic mb-2 -mt-1">{date}</p>
+            <p className="text-xs italic mb-2 -mt-1">Pedido realizado el {date}</p>
             }
             {/* <p>{order.date.toDate()}</p> */}
             <p className="text-left text-sm">{order.buyer.name} ({order.buyer.phone}) </p>
