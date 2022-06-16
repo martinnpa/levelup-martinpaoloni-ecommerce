@@ -13,7 +13,7 @@ const Index = () => {
   const { cart, resetCart, subTotal, removeFromCart } = useContext(generalContext);
   const [grouped, setGrouped] = useState();
   const [userDiscount, setUserDiscount] = useState({});
-  const [total, setTotal] = useState(subTotal);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     if (cart) {
@@ -22,12 +22,18 @@ const Index = () => {
   }, [cart])
 
   useEffect(() => {
+    setTotal(subTotal)
+  }, [subTotal])
+
+  useEffect(() => {
     if (userDiscount.percent) {
       let discount = subTotal * (userDiscount.percent/100 )
       if (discount > userDiscount.max) {
         discount = userDiscount.max;
       }
       setTotal(subTotal - discount);
+    } else {
+      setTotal(subTotal);
     }
   }, [userDiscount])
 
@@ -72,7 +78,7 @@ const Index = () => {
               </div>
             ))
           }
-          <Coupon userDiscount={userDiscount} setUserDiscount={setUserDiscount}/>
+          <Coupon setUserDiscount={setUserDiscount}/>
           {subTotal &&
           <p className="mt-8 text-center md:text-right">
             Total:
