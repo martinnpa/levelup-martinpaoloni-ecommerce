@@ -22,7 +22,7 @@ const Index = () => {
   }, [cart])
 
   useEffect(() => {
-    setTotal(subTotal)
+    setTotal(subTotal);
   }, [subTotal])
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Index = () => {
               </div>
             ))
           }
-          <Coupon setUserDiscount={setUserDiscount}/>
+          <Coupon subTotal={subTotal} setUserDiscount={setUserDiscount}/>
           {subTotal &&
           <p className="mt-8 text-center md:text-right">
             Total:

@@ -1,12 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { FetchCoupon } from 'api';
 import { Disclosure, Transition} from '@headlessui/react';
 
-const Coupon = ({setUserDiscount}) => {
+const Coupon = ({subTotal, setUserDiscount}) => {
   const [success, setSuccess] = useState("")
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // setUserDiscount({});
+    setSuccess("");
+  }, [subTotal])
+
 
   const formik = useFormik({
     initialValues: {
@@ -23,10 +29,11 @@ const Coupon = ({setUserDiscount}) => {
       setSuccess("")
       FetchCoupon(values.coupon).then(result => {
         setUserDiscount(result);
-        setSuccess(`Descuento agregado! -${result.percent}% OFF`);
+        setSuccess(`Descuento agregado! -${result.percent}% OFF (tope: $${result.max})`);
         setLoading(false);
       }).catch(error=>{
         setUserDiscount({})
+        setSuccess("");
         formik.setErrors({ coupon: error });
         console.error(error);
         setLoading(false);
