@@ -114,13 +114,13 @@ const submitOrder = (order) => {
           <H1 className="mb-8 text-center">Finalizá tu pedido</H1>
 
           <Field className={`${style}`} type="text" name="name" placeholder="Nombre"/>
-          <span className="text-sm font-light leading-tight text-red-500"><ErrorMessage name="name"/></span>
+          <span className="text-sm font-light leading-tight text-alert"><ErrorMessage name="name"/></span>
 
           <Field className={`${style}`} type="phone" name="phone" placeholder="Teléfono"/>
-          <span className="text-sm font-light leading-tight text-red-500"><ErrorMessage name="phone"/></span>
+          <span className="text-sm font-light leading-tight text-alert"><ErrorMessage name="phone"/></span>
 
           <Field className={`${style}`} type="email" name="email" placeholder="Email"/>
-          <span className="text-sm font-light leading-tight text-red-500"><ErrorMessage name="email"/></span>
+          <span className="text-sm font-light leading-tight text-alert"><ErrorMessage name="email"/></span>
 
           <Button type="submit" className="block w-full py-2 mt-8" filled disabled={loading}>
             Realizar compra

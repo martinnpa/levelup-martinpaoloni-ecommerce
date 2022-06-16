@@ -4,19 +4,32 @@ import { generalContext } from 'context';
 import { groupBy } from 'components/Common/Functions';
 import { TrashIcon } from '@heroicons/react/outline';
 import ItemCountByOne from 'components/Common/ItemCount/ItemCountByOne';
-import FormCheckout from './FormCheckout';
-import FormCheckout3 from './FormCheckout2';
+// import FormCheckout from './FormCheckout';
+import FormCheckout from './FormCheckout2';
 import { Link } from 'react-router-dom';
+import Coupon from './Coupon';
 
 const Index = () => {
   const { cart, resetCart, subTotal, removeFromCart } = useContext(generalContext);
   const [grouped, setGrouped] = useState();
+  const [userDiscount, setUserDiscount] = useState({});
+  const [total, setTotal] = useState(subTotal);
 
   useEffect(() => {
     if (cart) {
       setGrouped(groupBy(cart, 'category'));
     }
   }, [cart])
+
+  useEffect(() => {
+    if (userDiscount.percent) {
+      let discount = subTotal * (userDiscount.percent/100 )
+      if (discount > userDiscount.max) {
+        discount = userDiscount.max;
+      }
+      setTotal(subTotal - discount);
+    }
+  }, [userDiscount])
 
 
   if (cart.length === 0) return (
@@ -59,18 +72,19 @@ const Index = () => {
               </div>
             ))
           }
+          <Coupon userDiscount={userDiscount} setUserDiscount={setUserDiscount}/>
           {subTotal &&
           <p className="mt-8 text-center md:text-right">
             Total:
             <span className="p-2 ml-4 border rounded border-black/20 bg-black/50" style={{borderStyle: "inset"}}>
-              $ {subTotal}
+              $ {total}
             </span>
           </p>
           }
         </div>
       </div>
       <div className="col-span-10 md:col-span-4 lg:col-span-3 px-10 pt-10 bg-primary-light shadow-xl shadow-black">
-        <FormCheckout3 cart={cart} resetCart={resetCart} total={subTotal}/>
+        <FormCheckout cart={cart} resetCart={resetCart} total={total}/>
       </div>
     </div>
     </>
