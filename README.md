@@ -5,6 +5,8 @@ Engrega final bootcamp CoderHouse Telecom - Paoloni Martin.
 ![CoderPizza screen](https://i.imgur.com/rhR19JA.gif)
 
 ---
+## Firebase hosting: [https://level-up-teco-coderpizza.web.app/](https://level-up-teco-coderpizza.web.app/)
+---
 ## Librerías utilizadas
 - Tailwind CSS [Link](https://tailwindcss.com/) 
   - Tailwind plugin line clamp [Link](https://github.com/tailwindlabs/tailwindcss-line-clamp)
@@ -39,7 +41,7 @@ Engrega final bootcamp CoderHouse Telecom - Paoloni Martin.
 - Banner (descuento) con flag de si se muestra o no (cuando lo cerras) guardado en sessionStorage, para que pueda volver a aparecer si queres el descuento después de cerrar la web.
 - Cart Widget, resumen del carrito dinámico con notificación de cantidad de productos, visualización en el menú de los productos agregados y posibilidad de eliminarlos en el mismo.
 - Manejador de cantidades donde se puede sumar o restar cantidad de un mismo producto, de forma explícita le mostramos al usuario para evitar confusiones cuando muestra el producto ya agregado quita o suma cantidades del mismo.
-- En el carrito utilice otro manejador de cantidades donde a medida que vas tocando los signos + o - va cambiando la cantidad sin necesidad de un botón.
+- En el carrito hice otro manejador de cantidades donde a medida que vas tocando los signos + o - va cambiando la cantidad sin necesidad de un botón.
 - En el producto extendido el cuadro de stock va cambiando de icono y de color de fondo de acuerdo a la cantidad de stock disponible.
 - En el carrito extendido valida si no hay productos agregados muestra un mensaje y un link para ir al listado.
 - Carrito extendido y Widget productos agrupados según la categoría.
@@ -50,6 +52,7 @@ Engrega final bootcamp CoderHouse Telecom - Paoloni Martin.
 - Vista de pedido realizado, se puede acceder a las órdenes ya generadas (además de los productos, muestra la info del comprador, horario de compra y descuento aplicado si tiene.)
 - Teco mode, un switch estilo dark mode pero con los colores de Telecom.
 - Full Responsive.
+- Deploy realizado con firebase.
 
 ### Detalle
 - Tanto la carpeta trash como algunas funciones comentadas, no exportadas o no utilizadas las deje en el proyecto intencionalmente, mi idea es tomar este proyecto para testear o refrescar como hice algunas cosas a futuro, espero que no molesten!.
