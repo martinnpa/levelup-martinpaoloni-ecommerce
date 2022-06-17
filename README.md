@@ -1,9 +1,8 @@
 # Proyecto Ecommerce Level Up - Bootcamp CoderHouse Telecom -
 
 ---
-
-![CoderPizza screen](https://i.imgur.com/sCau0nR.gifv)
-
+[CoderPizza screen](https://i.imgur.com/rhR19JA.gifv)
+[Más calidad](https://i.imgur.com/sCau0nR.gifv)
 ---
 ## Librerías utilizadas
 - Tailwind CSS [Link](https://tailwindcss.com/) 
