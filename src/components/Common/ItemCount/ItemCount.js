@@ -1,6 +1,5 @@
 //@ts-check
 import React, {useContext, useState, useEffect} from 'react';
-import styles from "./Button.module.css";
 import { ShoppingCartIcon } from '@heroicons/react/outline';
 import Button from 'components/Common/Button';
 import { generalContext } from 'context';
@@ -51,7 +50,8 @@ const ItemCount = ({product, initial}) => {
       <p className="mb-3 text-xs text-center text-primary-on">Stock: {stock - counter}</p>
       <div className="flex justify-between w-1/2 mx-auto">
         <button
-          className={styles.operation}
+          className="inline-block text-white border bg-grey-1 disabled:opacity-50 disabled:cursor-not-allowed border-grey-1 hover:border-secundary"
+          style={{padding: '12px 10px', lineHeight:'0'}}
           onClick={() => handleOperationMinus()}
           disabled={counter === 0}
         >
@@ -61,7 +61,8 @@ const ItemCount = ({product, initial}) => {
         <span className="text-primary-on">{counter}</span>
 
         <button
-          className={styles.operation}
+          className="inline-block text-white border bg-grey-1 disabled:opacity-50 disabled:cursor-not-allowed border-grey-1 hover:border-secundary"
+          style={{padding: '12px 10px', lineHeight:'0'}}
           onClick={() => handleOperationSum()}
           disabled={counter === stock}
         >

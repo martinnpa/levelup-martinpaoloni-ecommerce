@@ -5,7 +5,7 @@ import { groupBy } from 'components/Common/Functions';
 import { TrashIcon } from '@heroicons/react/outline';
 import ItemCountByOne from 'components/Common/ItemCount/ItemCountByOne';
 // import FormCheckout from './FormCheckout';
-import FormCheckout from './FormCheckout2';
+import FormCheckout from './FormCheckout';
 import { Link } from 'react-router-dom';
 import Coupon from './Coupon';
 

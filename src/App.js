@@ -5,29 +5,32 @@ import Cart from "components/Cart";
 import NewOrder from "components/NewOrder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
-import Test from "[trash] Mock Files/Test";
+import Footer from "components/Footer";
+import Container from "components/Container";
 
 function App() {
 
   return (
     <>
       <Context>
-        <div className="min-h-screen theme-dashboard">
+        <Container>
             <BrowserRouter>
 
               <Header/>
 
               <Routes>
-                  <Route path="/test" element={<Test/>}/>
                   <Route path="/" element={<ItemListContainer/>}/>
-                  <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
                   <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
                   <Route path="/cart" element={<Cart/>}/>
-                  <Route path="/new-order/:orderId" element={<NewOrder/>}/>
+                  <Route path="/order/:orderId" element={<NewOrder/>}/>
+                  <Route path="/*" element={<h2 className="text-center py-10 px-4">Error 404, Página no encontrada.</h2>}/>
               </Routes>
+
+              <Footer/>
+
             </BrowserRouter>
-        </div>
+        </Container>
     </Context>
     </>
   );

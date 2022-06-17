@@ -1,18 +1,19 @@
 import React, { useState, Fragment, useContext, useEffect } from 'react';
-import { Popover, Transition, Menu } from '@headlessui/react';
-import {
-  MenuIcon,
-  XIcon,
-} from '@heroicons/react/outline';
+import { Popover, Transition } from '@headlessui/react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import PizzasMenu from './PizzasMenu';
 import CartWidget from './CartWidget';
 import logo from 'assets/coderpizza2.png';
-import {Link} from 'react-router-dom';
+import logoTeco from 'assets/tecopizza2.png';
+import { Link } from 'react-router-dom';
 import { FetchCategories } from 'api';
+import { generalContext } from 'context';
 
 
 const Index = () => {
   const [categories, setCategories] = useState([]);
+
+  const { tecoMode } = useContext(generalContext);
 
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Index = () => {
                 <Link to={"/"}>
                 <img
                   className="w-auto h-max-20"
-                  src={logo}
+                  src={tecoMode ? logoTeco : logo}
                   alt="logo"
                 />
                 </Link>
@@ -62,7 +63,7 @@ const Index = () => {
               leaveTo="opacity-0 translate-y-1"
               >
             <Popover.Panel as="nav" focus className="absolute inset-x-0 top-0 transition origin-top-right transform md:hidden">
-              <div className="flex justify-center items-center px-5 pt-5 pb-6 bg-black/70 backdrop-blur">
+              <div className="flex justify-center items-center px-5 pt-5 pb-6 bg-black/80 backdrop-blur">
                   <ul>
                       <li><PizzasMenu categories={categories}/></li>
                   </ul>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {collection, doc, getDoc, getDocs, getFirestore, query, where, addDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
 
-const FetchProducts = (categoryId = '') => {
+/* const FetchProducts1 = (categoryId = '') => {
   return new Promise ((res, rej) => {
     const db = getFirestore();
 
@@ -24,6 +24,18 @@ const FetchProducts = (categoryId = '') => {
       }
     } )
   });
+} */
+
+const FetchProducts = (categoryId = '') => {
+    const db = getFirestore();
+    let productCollection;
+    if (!categoryId) {
+      productCollection = collection(db, "products");
+    } else {
+      productCollection = query(collection(db, "products"), where("category", "==", categoryId));
+    }
+
+    return getDocs(productCollection);
 }
 
 const FetchProduct = (productId) => {
@@ -36,7 +48,7 @@ const FetchProduct = (productId) => {
         let product = {...document.data(), id: document.id}
         res(product);
       } else {
-        rej("Error intentar cargar el producto");
+        rej("Error al intentar cargar el producto / producto inexistente.");
       }
     })
   });
@@ -59,7 +71,7 @@ const FetchOrder = (orderId) => {
      } else {
        rej("Error al intentar cargar la orden.");
      }
-   })
+   }).catch(error => rej(error));
  });
 }
 
@@ -78,7 +90,7 @@ const FetchCategories = () => {
       } else {
         rej("Error al intentar cargar el producto de la base de datos");
       }
-    } )
+    } ).catch(error => rej(error));
   });
 }
 
@@ -92,7 +104,7 @@ const NewOrder = (order) => {
       } else {
         rej("Error al intentar guardar la orden");
       }
-    })
+    }).catch(error => rej(error))
   });
 }
 
@@ -139,11 +151,5 @@ const FetchCoupon = (couponId) => {
  });
 }
 
-const TestApi = (orderId) => {
-    const db = getFirestore();
-    const orderDocument = doc(db, "orders", orderId);
-    return getDoc(orderDocument);
-}
 
-
-export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories, FetchOrder, NewOrder, UpdateDocument, UpdateStock, FetchCoupon, TestApi}
+export {FetchProduct, FetchProduct2, FetchProducts, FetchCategories, FetchOrder, NewOrder, UpdateDocument, UpdateStock, FetchCoupon}

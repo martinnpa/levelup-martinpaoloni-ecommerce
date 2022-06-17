@@ -4,7 +4,7 @@ import {useParams } from 'react-router-dom';
 import Loader from 'components/Common/Loader';
 import ItemDetail from './ItemDetail';
 import { FetchProduct } from 'api';
-import { FetchProduct2 } from 'api';
+// import { FetchProduct2 } from 'api';
 import { generalContext } from 'context';
 
 const ItemDetailContainer = () => {
@@ -29,7 +29,7 @@ const ItemDetailContainer = () => {
     .finally(() => setLoading(false));
   }
 
-  const getItem2 = (id) => {
+  /* const getItem2 = (id) => {
     const fetch = async () => {
       return await FetchProduct2(id);
     }
@@ -42,7 +42,7 @@ const ItemDetailContainer = () => {
       setError(''+error);
     })
     .finally(() => setLoading(false));
-  }
+  } */
 
   useEffect(()=>{
     getItem(itemId);
@@ -53,7 +53,7 @@ const ItemDetailContainer = () => {
     <>
     {loading && <Loader/>}
     {
-    error ? <h2>Error, {error}</h2> :
+    error ? <h2 className="text-center py-10 px-10 text-alert">Error, {error}</h2> :
       <ItemDetail product={product} initial={handleInitial(product.id)}/>
     }
     </>

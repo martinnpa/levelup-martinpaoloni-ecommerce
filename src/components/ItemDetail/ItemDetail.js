@@ -30,7 +30,7 @@ const ItemDetail = ({product, initial}) => {
   return (
     <>
       <div className="pb-8 bg-secundary-alt text-primary">
-        <div className="container grid grid-cols-2 gap-5 p-10">
+        <div className="container md:grid md:grid-cols-2 gap-5 p-10">
           <div>
             <h1 className="text-3xl font-black">{name}</h1>
             <p className="pt-8 text-xl">
@@ -41,7 +41,7 @@ const ItemDetail = ({product, initial}) => {
             </p>
 
             {stockLabel &&
-              <span className={`${styleStock[stockLabel].className} py-2 px-3`}>
+              <span className={`${styleStock[stockLabel].className} py-2 px-3 inline-block rounded mb-6`}>
                 Stock: {stockLabel} {styleStock[stockLabel].icon}
               </span>
             }

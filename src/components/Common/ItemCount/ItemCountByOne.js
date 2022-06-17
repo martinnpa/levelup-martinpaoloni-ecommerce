@@ -1,6 +1,5 @@
 //@ts-check
 import React, {useContext, useState, useEffect} from 'react';
-import styles from "./Button.module.css";
 import { generalContext } from 'context';
 
 const ItemCountByOne = ({product, initial}) => {

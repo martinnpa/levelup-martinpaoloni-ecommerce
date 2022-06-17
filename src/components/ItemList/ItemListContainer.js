@@ -11,7 +11,7 @@ const ItemListContainer = () => {
 
   let {categoryId} = useParams();
 
-  const getProducts = (categoryId) => {
+  /* const getProducts1 = (categoryId) => {
     setLoading(true);
     FetchProducts(categoryId).then(
       (result) => {
@@ -23,6 +23,19 @@ const ItemListContainer = () => {
       }
     )
     .finally(() => setLoading(false));
+  } */
+
+  const getProducts = (categoryId) => {
+    setLoading(true);
+    FetchProducts(categoryId).then( (result) => {
+      let documents = result.docs;
+      const arrayProducts = documents.map((document) => {
+        return {...document.data(), id:document.id};
+      })
+      setProductsList(arrayProducts);
+    }).catch((error) => {
+        setError(''+error);
+    }).finally(() => setLoading(false));
   }
 
   useEffect(()=>{

@@ -5,6 +5,7 @@ export const generalContext = createContext();
 const Context = ({children}) => {
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState();
+  const [tecoMode, setTecoMode] = useState(false);
 
   const handleInitial = (id) => {
     let index = cart.map(product => product.id).indexOf(id);
@@ -43,7 +44,11 @@ const Context = ({children}) => {
   const isInCart = (productId) => {
     let index = cart.findIndex(element => element.id === productId)
     return (index !== -1) ? true : false;
-}
+  }
+
+  const handleTecoMode = () => {
+    setTecoMode(!tecoMode);
+  }
 
   useEffect(()=>{
     if (localStorage.cart) {
@@ -61,7 +66,7 @@ const Context = ({children}) => {
   },[cart])
 
   return (
-    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial, resetCart, isInCart}}>
+    <generalContext.Provider value={{ cart, subTotal, addToCart, removeFromCart, handleInitial, resetCart, isInCart, tecoMode, handleTecoMode}}>
       {children}
     </generalContext.Provider>
   )
