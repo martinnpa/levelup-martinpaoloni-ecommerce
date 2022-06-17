@@ -14,10 +14,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Formik [Link](https://github.com/jaredpalmer/formik) --> Libreria más popular/usada para el manejo de formularios, recomendada en varios sitios.
   - yup [Link] (https://github.com/jquense/yup) --> Libreria recomendada por Formik (se adaptan)
 
-
 ---
 ## Available Scripts
 
 ### `npm start`
 ### `npm test`
 ### `npm run build`
+
+

@@ -71,8 +71,8 @@ const NewOrder = () => {
               return <li key={product.id} className="flex justify-between">{product.name} x{product.qty}<span> ${product.qty * product.price}</span></li>
             })}
             </ul>
-            <hr/>
-            <p className="text-right pr-2 mt-1">Total: ${order.total}</p>
+            {order.discount && <p className="text-right pr-2 mt-1">Cupón descuento: -${order.discount}</p> }
+            <p className="text-right pr-2 mt-1 text-lg">Total: ${order.total}</p>
           </div>
       </>
       :

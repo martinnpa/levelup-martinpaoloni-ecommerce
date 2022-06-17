@@ -9,7 +9,7 @@ import { Timestamp } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import Spinner from 'components/Common/Spinner';
 
-const FormCheckout = ({cart, resetCart, total }) => {
+const FormCheckout = ({cart, resetCart, total, discount }) => {
   const [noStock, setNoStock] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
@@ -104,6 +104,7 @@ const submitOrder = (order) => {
           const newOrder = {
             products: [...cart],
             buyer: values,
+            discount: discount,
             total: total,
             date: Timestamp.fromDate(new Date(Date.now())),
           }

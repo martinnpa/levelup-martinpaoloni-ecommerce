@@ -14,6 +14,7 @@ const Index = () => {
   const [grouped, setGrouped] = useState();
   const [userDiscount, setUserDiscount] = useState({});
   const [total, setTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
     if (cart) {
@@ -23,19 +24,24 @@ const Index = () => {
 
   useEffect(() => {
     setTotal(subTotal);
+    setDiscount(0);
   }, [subTotal])
 
   useEffect(() => {
     if (userDiscount.percent) {
-      let discount = subTotal * (userDiscount.percent/100 )
-      if (discount > userDiscount.max) {
-        discount = userDiscount.max;
+      let discountNumber = subTotal * (userDiscount.percent/100 )
+      setDiscount(discountNumber);
+      if (discountNumber > userDiscount.max) {
+        discountNumber = userDiscount.max;
+        setDiscount(userDiscount.max);
       }
-      setTotal(subTotal - discount);
+      setTotal(subTotal - discountNumber);
     } else {
+      setDiscount(0);
       setTotal(subTotal);
     }
   }, [userDiscount])
+
 
 
   if (cart.length === 0) return (
@@ -79,8 +85,12 @@ const Index = () => {
             ))
           }
           <Coupon subTotal={subTotal} setUserDiscount={setUserDiscount}/>
+          <hr className="my-6 opacity-10"/>
+          {discount > 0 &&
+          <p className="text-right text-sm">Descuento aplicado: <span className="pl-1">- ${discount}</span></p>
+          }
           {subTotal &&
-          <p className="mt-8 text-center md:text-right">
+          <p className="mt-4 text-center md:text-right">
             Total:
             <span className="p-2 ml-4 border rounded border-black/20 bg-black/50" style={{borderStyle: "inset"}}>
               $ {total}
@@ -90,7 +100,7 @@ const Index = () => {
         </div>
       </div>
       <div className="col-span-10 md:col-span-4 lg:col-span-3 px-10 pt-10 bg-primary-light shadow-xl shadow-black">
-        <FormCheckout cart={cart} resetCart={resetCart} total={total}/>
+        <FormCheckout cart={cart} resetCart={resetCart} total={total} discount={discount}/>
       </div>
     </div>
     </>

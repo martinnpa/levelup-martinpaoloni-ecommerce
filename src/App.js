@@ -5,7 +5,7 @@ import Cart from "components/Cart";
 import NewOrder from "components/NewOrder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "context";
-import FirebaseUpdate from "[trash] Mock Files/FirebaseUpdate";
+import Test from "[trash] Mock Files/Test";
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
               <Header/>
 
               <Routes>
-                  <Route path="/test" element={<FirebaseUpdate/>}/>
+                  <Route path="/test" element={<Test/>}/>
                   <Route path="/" element={<ItemListContainer/>}/>
                   <Route path="/*" element={<h2>Error 404, Página no encontrada.</h2>}/>
                   <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
