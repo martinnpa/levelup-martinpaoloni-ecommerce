@@ -1,7 +1,7 @@
 # Proyecto Ecommerce Level Up - Bootcamp CoderHouse Telecom -
 
 ---
-[CoderPizza screen](https://i.imgur.com/rhR19JA.gifv)
+![CoderPizza screen](https://i.imgur.com/rhR19JA.gif)
 [Más calidad](https://i.imgur.com/sCau0nR.gifv)
 ---
 ## Librerías utilizadas
