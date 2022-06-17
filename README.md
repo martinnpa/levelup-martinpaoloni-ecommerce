@@ -1,8 +1,9 @@
-# Proyecto Ecommerce Level Up - Bootcamp CoderHouse Telecom -
+# Proyecto Ecommerce React - Level Up
+Engrega final bootcamp CoderHouse Telecom - Paoloni Martin.
 
 ---
 ![CoderPizza screen](https://i.imgur.com/rhR19JA.gif)
-[Más calidad](https://i.imgur.com/sCau0nR.gifv)
+
 ---
 ## Librerías utilizadas
 - Tailwind CSS [Link](https://tailwindcss.com/) 
@@ -63,3 +64,8 @@ Proyecto inicializado con [Create React App](https://github.com/facebook/create-
 ### `npm start`
 ### `npm test`
 ### `npm run build`
+
+
+## Author
+
+- [Martin Paoloni](https://github.com/martinnpa/)
